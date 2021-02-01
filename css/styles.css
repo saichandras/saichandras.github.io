@@ -10725,6 +10725,12 @@ section.resume-section .resume-section-content {
     height: 1.05em;
 }
 
-.awards-content {
+.projects_image {
 
+    border-radius: 10px;
+    box-shadow: 0 10px 6px -6px #777;
+    height: 420px;
+    width: 220px;
+
+    border: 1px solid #ddd;
 }
