@@ -10732,3 +10732,29 @@ section.resume-section .resume-section-content {
     width: 220px;
     border: 1px solid #ddd;
 }
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+}
+
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    width: 60px;
+    height: 60px;
+    background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_2.gif) center no-repeat #fff;
+}
