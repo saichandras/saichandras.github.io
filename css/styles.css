@@ -10630,9 +10630,10 @@ p.lead {
     }
 
     #sideNav .navbar-brand .img-profile {
-        max-width: 13rem;
-        max-height: 13rem;
-        border: 0.5rem solid rgba(255, 255, 255, 0.2);
+        max-width: 14rem;
+        max-height: 14rem;
+        border: 0.4rem solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.3rem !important;
     }
 
     #sideNav .navbar-collapse {
@@ -10668,6 +10669,7 @@ p.lead {
     border-radius: 100%;
     font-size: 1.5rem;
     margin-right: 1.5rem;
+    margin-bottom: 15px;
 }
 
 .social-icons .social-icon:last-child {
