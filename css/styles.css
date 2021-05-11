@@ -10714,12 +10714,13 @@ section.resume-section .resume-section-content {
 
 
 /* Me */
-.skills-image {
-    display: inline-block;
-    font-size: inherit;
-    height: 0.95em;
-    overflow: visible;
-    vertical-align: -.125em;
+
+.dev-icons img{
+  display: inline-block;
+  font-size: inherit;
+  height: 0.95em;
+  overflow: visible;
+  vertical-align: -.125em;
 }
 
 .extend-height {
