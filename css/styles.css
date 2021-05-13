@@ -10625,14 +10625,16 @@ p.lead {
 
     #sideNav .navbar-brand {
         display: flex;
-        margin: auto auto 0;
+        margin: auto 50% 0;
         padding: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     #sideNav .navbar-brand .img-profile {
-        max-width: 14rem;
-        max-height: 14rem;
-        border: 0.5rem solid rgba(255, 255, 255, 0.2);
+        max-width: 15rem;
+        max-height: 20rem;
+        border-radius: 10%;
+        border: 0.3rem solid rgba(255, 255, 255, 0.2);
     }
 
     #sideNav .navbar-collapse {
@@ -10730,9 +10732,10 @@ section.resume-section .resume-section-content {
 .projects_image {
     border-radius: 10px;
     box-shadow: 0 10px 6px -6px #777;
-    height: 450px;
+    height: 460px;
     width: 220px;
     border: 1px solid #ddd;
+    margin: 1.2rem 1.2rem;
 }
 
 /*--------------------------------------------------------------
