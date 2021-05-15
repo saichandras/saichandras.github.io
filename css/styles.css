@@ -10726,7 +10726,8 @@ section.resume-section .resume-section-content {
 }
 
 .extend-height {
-    height: 1.05em;
+    width:auto;
+    height: auto;
 }
 
 .projects_image {
