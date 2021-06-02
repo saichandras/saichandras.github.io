@@ -10800,3 +10800,42 @@ section.resume-section .resume-section-content {
     margin-left: 20px;
     margin-right: 20px;
 }
+
+.mdi-36px {
+    font-size: 39px;
+    margin-right: 10px
+}
+
+.container {
+    margin-top: 150px
+}
+
+.app-button{
+    margin: 0 20px;
+    width: 12rem;
+    max-width: 12rem;
+}
+
+.app-buttons-container{
+    margin-bottom: 0.8rem;
+}
+
+@media screen and (max-width: 501px) {
+    .app-buttons-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .app-button{
+        width: 12rem;
+        max-width: 12rem;
+        margin-bottom: 1.7rem;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-buttons-container{
+        margin-bottom: 2.4rem;
+    }
+}
