@@ -52,7 +52,7 @@
     //Typed
         $('document').ready(function(){
             var typed_subheading = new Typed("#typed_subheading",{
-                strings: ['Mobile Application Developer', 'Software Developer', 'Back-End Developer', 'Programmer'],
+                strings: ['Mobile Developer', 'Software Developer', 'Back-End Developer', 'Programmer'],
                 typeSpeed: 35,
                 backSpeed: 20,
                 loop: true
