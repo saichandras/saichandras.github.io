@@ -10821,7 +10821,7 @@ section.resume-section .resume-section-content {
     overflow: hidden;
     background: #fff;
   }
-  
+
   #preloader:before {
     content: "";
     position: fixed;
@@ -10836,7 +10836,7 @@ section.resume-section .resume-section-content {
     -webkit-animation: animate-preloader 1s linear infinite;
     animation: animate-preloader 1s linear infinite;
   }
-  
+
   @-webkit-keyframes animate-preloader {
     0% {
       transform: rotate(0deg);
@@ -10845,7 +10845,7 @@ section.resume-section .resume-section-content {
       transform: rotate(360deg);
     }
   }
-  
+
   @keyframes animate-preloader {
     0% {
       transform: rotate(0deg);
@@ -10854,7 +10854,7 @@ section.resume-section .resume-section-content {
       transform: rotate(360deg);
     }
   }
-  
+
   /*--------------------------------------------------------------
   # Disable aos animation delay on mobile devices
   --------------------------------------------------------------*/
