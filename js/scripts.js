@@ -48,7 +48,7 @@
   //Typed
   $("document").ready(function () {
     var typed_subheading = new Typed("#typed_subheading", {
-      strings: ["Software Engineer", "Full-Stack Developer", "Front-End Developer", "Back-End Developer", "Mobile Developer"],
+      strings: ["Full Stack Engineer", "Software Engineer", "Front-End Developer", "Back-End Developer", "Mobile Developer"],
       typeSpeed: 35,
       backSpeed: 20,
       loop: true,
