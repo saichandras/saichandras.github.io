@@ -3,8 +3,6 @@ name: Deploy static content to GitHub Pages
 on:
   push:
     branches: ['master']
-  pull_request:
-    branches: ['master']
   workflow_dispatch:
 
 permissions:
@@ -18,10 +16,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.event_name == 'push'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -50,52 +44,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  preview:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to Surge
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: |
-          npm install -g surge
-          surge ./dist --domain ${{ github.sha }}-saichandras.surge.sh
-
-      - name: Post deployment URL as comment
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
-            })
-
-  teardown:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to Surge
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: |
-          npm install -g surge
-          surge teardown ${{ github.sha }}-saichandras.surge.sh
