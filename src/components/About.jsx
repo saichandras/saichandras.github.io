@@ -50,7 +50,8 @@ const About = () => {
         enhancing data analytics with refined NLP capabilities. My expertise lies in designing
         robust microservices architectures, configuring <span className="font-bold">NGINX</span> as
         a reverse proxy, and implementing secure authentication mechanisms using{' '}
-        <span className="font-bold">SSO</span> and <span className="font-bold">SAML</span>.<br />
+        <span className="font-bold">SSO</span> and <span className="font-bold">SAML</span>
+        .<br />
         <br />
         Specializing in architecting <span className="font-bold">CI/CD pipelines</span> and
         implementing serverless solutions, I leverage containerization for seamless testing and
@@ -67,7 +68,7 @@ const About = () => {
         improvements in user satisfaction and business outcomes.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-20 flex flex-wrap gap-10 justify-center items-center">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

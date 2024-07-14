@@ -1,5 +1,4 @@
 # Node.js
-node_modules
 node_modules/
 dist/
 .env
@@ -11,3 +10,6 @@ logs
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Other
+.prettierrc
