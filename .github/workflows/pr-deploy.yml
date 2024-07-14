@@ -11,7 +11,7 @@ permissions:
 jobs:
   preview:
     environment:
-      name: pr-preview
+      name: pr-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
