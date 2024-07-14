@@ -71,6 +71,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Surge
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
           npm install -g surge
           surge ./dist --domain ${{ github.sha }}-saichandras.surge.sh
@@ -86,3 +88,14 @@ jobs:
               repo: context.repo.repo,
               body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
             })
+
+  teardown:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Surge
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npm install -g surge
+          surge teardown ${{ github.sha }}-saichandras.surge.sh
