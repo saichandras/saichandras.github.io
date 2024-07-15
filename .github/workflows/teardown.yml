@@ -21,30 +21,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download previous SHA
-        if: github.event.action == 'synchronize'
-        uses: actions/download-artifact@v2
-        with:
-          name: commit-sha
-          path: .
+      - name: Try to download previous SHA
+        id: download_sha
+        run: |
+          echo "Trying to download previous SHA"
+          actions/download-artifact@v2 --name commit-sha --path .
+          if [ $? -ne 0 ]; then
+            echo "exists=false" >> $GITHUB_ENV
+          else
+            echo "exists=true" >> $GITHUB_ENV
+          fi
 
       - name: Check if SHA file exists
-        id: check_sha
-        run: |
-          if [ -f sha.txt ]; then echo "exists=true" >> $GITHUB_ENV; else echo "exists=false" >> $GITHUB_ENV; fi
-
-      - name: Read previous SHA
         if: env.exists == 'true'
-        id: read_sha
-        run: echo "PREVIOUS_SHA=$(cat sha.txt)" >> $GITHUB_ENV
+        id: check_sha
+        run: echo "Previous SHA file found."
 
       - name: Teardown previous Surge deployment
         if: env.exists == 'true'
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
+          PREVIOUS_SHA=$(cat sha.txt)
           npm install -g surge
-          surge teardown ${{ env.PREVIOUS_SHA }}-saichandras.surge.sh
+          surge teardown $PREVIOUS_SHA-saichandras.surge.sh || echo "No previous deployment found, skipping teardown."
 
       - name: Teardown current Surge deployment
         if: github.event.pull_request.merged == true
@@ -52,4 +52,4 @@ jobs:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
           npm install -g surge
-          surge teardown ${{ github.sha }}-saichandras.surge.sh
+          surge teardown ${{ github.sha }}-saichandras.surge.sh || echo "No current deployment found, skipping teardown."
