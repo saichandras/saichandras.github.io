@@ -47,14 +47,3 @@ jobs:
               repo: context.repo.repo,
               body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
             })
-
-  teardown:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Teardown Surge deployment
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: |
-          npm install -g surge
-          surge teardown ${{ github.sha }}-saichandras.surge.sh
