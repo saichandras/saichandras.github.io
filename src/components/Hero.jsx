@@ -25,10 +25,10 @@ const Hero = () => {
         </div>
       </div>
       <div className="pt-2" />
-      <div className="absolute inset-0 top-[300px] w-full h-[620px] flex items-center justify-center z-10">
+      <div className="absolute inset-0 lg:top-[30%] md:top-[33%] sm:top-[38%] top-[38.2%] w-full lg:h-[70%] md:h-[65%] h-[60%] flex items-center justify-center z-10">
         <ComputersCanvas />
       </div>
-      <div className="absolute xs:bottom-20 bottom-28 w-full flex justify-center items-center z-20">
+      <div className="absolute bottom-20 w-full flex justify-center items-center z-20">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div

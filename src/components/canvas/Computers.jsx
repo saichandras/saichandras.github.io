@@ -9,8 +9,8 @@ const Computers = ({ isMobile, isTablet, isSmallTablet }) => {
   let scale, position;
 
   if (isMobile) {
-    scale = 0.8;
-    position = [0, -2, -2.4];
+    scale = 0.95;
+    position = [0, -2, -3.02];
   } else if (isSmallTablet) {
     scale = 1.0;
     position = [0, -2.35, -2.6];
