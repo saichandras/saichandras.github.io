@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const CardSlider = ({ images }) => {
   return (
     <Swiper
-      className="xs:w-[350px] xs:h-[730px] w-[310px] h-[645px]"
+      className="xs:w-[300px] xs:h-[648px] w-[265px] h-[573px]"
       effect={'cards'}
       grabCursor={true}
       modules={[EffectCards]}

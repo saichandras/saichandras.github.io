@@ -4,18 +4,29 @@ import PropTypes from 'prop-types';
 import { Suspense, useEffect, useState } from 'react';
 import CanvasLoader from '../Loader';
 
-const Computers = ({ isMobile }) => {
+const Computers = ({ isMobile, isTablet, isSmallTablet }) => {
   const { scene } = useGLTF('./desktop_pc/scene.gltf');
+  let scale, position;
+
+  if (isMobile) {
+    scale = 0.8;
+    position = [0, -2, -2.4];
+  } else if (isSmallTablet) {
+    scale = 1.0;
+    position = [0, -2.35, -2.6];
+  } else if (isTablet) {
+    scale = 1.0;
+    position = [0, -2.35, -2.0];
+  } else {
+    scale = 1.1;
+    position = [0, -2.25, -1.8];
+  }
+
   return (
     <mesh>
       <hemisphereLight intensity={3.5} groundColor="black" />
-      <pointLight intensity={2} />
-      <primitive
-        object={scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
-      />
+      <pointLight intensity={2} position={[0, 1, 0]} />
+      <primitive object={scene} scale={scale} position={position} rotation={[-0.01, -0.2, -0.1]} />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -30,22 +41,44 @@ const Computers = ({ isMobile }) => {
 
 Computers.propTypes = {
   isMobile: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired,
+  isSmallTablet: PropTypes.bool.isRequired,
 };
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isSmallTablet, setIsSmallTablet] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 500px)');
-    setIsMobile(mediaQuery.matches);
+    const mobileQuery = window.matchMedia('(max-width: 500px)');
+    const smallTabletQuery = window.matchMedia('(max-width: 700px) and (min-width: 501px)');
+    const tabletQuery = window.matchMedia('(max-width: 1000px) and (min-width: 701px)');
 
-    const handleMediaQueryChange = (event) => {
+    setIsMobile(mobileQuery.matches);
+    setIsSmallTablet(smallTabletQuery.matches);
+    setIsTablet(tabletQuery.matches);
+
+    const handleMobileQueryChange = (event) => {
       setIsMobile(event.matches);
     };
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+    const handleSmallTabletQueryChange = (event) => {
+      setIsSmallTablet(event.matches);
+    };
+
+    const handleTabletQueryChange = (event) => {
+      setIsTablet(event.matches);
+    };
+
+    mobileQuery.addEventListener('change', handleMobileQueryChange);
+    smallTabletQuery.addEventListener('change', handleSmallTabletQueryChange);
+    tabletQuery.addEventListener('change', handleTabletQueryChange);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      mobileQuery.removeEventListener('change', handleMobileQueryChange);
+      smallTabletQuery.removeEventListener('change', handleSmallTabletQueryChange);
+      tabletQuery.removeEventListener('change', handleTabletQueryChange);
     };
   }, []);
 
@@ -58,7 +91,7 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
-        <Computers isMobile={isMobile} />
+        <Computers isMobile={isMobile} isTablet={isTablet} isSmallTablet={isSmallTablet} />
       </Suspense>
       <Preload all />
     </Canvas>

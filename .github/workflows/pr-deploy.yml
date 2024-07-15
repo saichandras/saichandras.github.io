@@ -48,13 +48,11 @@ jobs:
               body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
             })
 
-  teardown:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Teardown Surge deployment
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: |
-          npm install -g surge
-          surge teardown ${{ github.sha }}-saichandras.surge.sh
+      - name: Save current SHA
+        run: echo "${{ github.sha }}" > sha.txt
+
+      - name: Upload current SHA
+        uses: actions/upload-artifact@v2
+        with:
+          name: commit-sha
+          path: sha.txt
