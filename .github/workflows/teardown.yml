@@ -14,8 +14,6 @@ permissions:
 jobs:
   teardown:
     if: github.event.pull_request.merged == true || github.event.action == 'synchronize'
-    environment:
-      name: pr-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
