@@ -1,8 +1,11 @@
 name: Teardown Surge deployment
 
 on:
+  push:
+    branches:
+      - '**'
   pull_request:
-    types: [closed]
+    types: [closed, synchronize]
 
 permissions:
   contents: read
@@ -10,7 +13,7 @@ permissions:
 
 jobs:
   teardown:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event.action == 'synchronize'
     environment:
       name: pr-deploy
     runs-on: ubuntu-latest
@@ -18,7 +21,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Teardown Surge deployment
+      - name: Download previous SHA
+        if: github.event.action == 'synchronize'
+        uses: actions/download-artifact@v2
+        with:
+          name: commit-sha
+          path: .
+
+      - name: Check if SHA file exists
+        id: check_sha
+        run: |
+          if [ -f sha.txt ]; then echo "exists=true" >> $GITHUB_ENV; else echo "exists=false" >> $GITHUB_ENV; fi
+
+      - name: Read previous SHA
+        if: env.exists == 'true'
+        id: read_sha
+        run: echo "PREVIOUS_SHA=$(cat sha.txt)" >> $GITHUB_ENV
+
+      - name: Teardown previous Surge deployment
+        if: env.exists == 'true'
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npm install -g surge
+          surge teardown ${{ env.PREVIOUS_SHA }}-saichandras.surge.sh
+
+      - name: Teardown current Surge deployment
+        if: github.event.pull_request.merged == true
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |

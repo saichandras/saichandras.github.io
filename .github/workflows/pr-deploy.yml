@@ -47,3 +47,12 @@ jobs:
               repo: context.repo.repo,
               body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
             })
+
+      - name: Save current SHA
+        run: echo "${{ github.sha }}" > sha.txt
+
+      - name: Upload current SHA
+        uses: actions/upload-artifact@v2
+        with:
+          name: commit-sha
+          path: sha.txt
