@@ -629,20 +629,20 @@ const social_icons = [
   },
   {
     name: 'GitHub',
-    icon_path: './github/github1.gltf',
+    icon_path: './github/github2.gltf',
     link: 'https://github.com/saichandras',
     args: {
-      scale: 1.85,
+      scale: 0.98,
       position: [0, -0.2, 0],
     },
   },
   {
     name: 'Resume',
-    icon_path: './resume/resume.gltf',
+    icon_path: './resume/resume1.gltf',
     link: 'https://drive.google.com/file/d/1s6VpI7O_BdBWYc9vHlQvhb1I0-D_uZ2y/view?usp=sharing',
     args: {
-      scale: 2.5,
-      position: [0, -0.2, 0],
+      scale: 1.25,
+      position: [0, -3.8, 0],
     },
   },
 ];
