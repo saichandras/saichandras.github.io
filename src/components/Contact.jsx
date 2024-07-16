@@ -116,7 +116,7 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={slideIn('right', 'tween', 0.1, 0.55)}
         className="
           xl:flex-1 
@@ -130,7 +130,7 @@ const Contact = () => {
         "
       >
         <EarthCanvas />
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };

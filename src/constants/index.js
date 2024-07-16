@@ -647,4 +647,4 @@ const projects = [
 //   },
 // ];
 
-export { services, technologies, experiences, testimonials, projects, social_icons };
+export { services, technologies, experiences, testimonials, projects };
