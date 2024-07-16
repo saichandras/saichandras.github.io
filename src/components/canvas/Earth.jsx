@@ -1,7 +1,6 @@
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
-
+import { Canvas, useFrame } from '@react-three/fiber';
+import React, { Suspense, useRef } from 'react';
 import CanvasLoader from '../Loader';
 
 const Earth = () => {
@@ -11,6 +10,18 @@ const Earth = () => {
 };
 
 Earth.propTypes = {};
+
+const AutoRotatingControls = (props) => {
+  const controlsRef = useRef();
+
+  useFrame((state, delta) => {
+    if (controlsRef.current) {
+      controlsRef.current.update(delta);
+    }
+  });
+
+  return <OrbitControls ref={controlsRef} {...props} />;
+};
 
 const EarthCanvas = () => {
   return (
@@ -27,14 +38,14 @@ const EarthCanvas = () => {
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
+        <AutoRotatingControls
           autoRotate
+          autoRotateSpeed={1}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
         <Earth />
-
         <Preload all />
       </Suspense>
     </Canvas>
