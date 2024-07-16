@@ -60,7 +60,7 @@ jobs:
           git fetch origin gh-pages:gh-pages
 
           # Clone the existing gh-pages branch
-          git clone --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository_name }}.git gh-pages
+          git clone --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/saichandras/saichandras.github.io.git gh-pages
           cd gh-pages
 
           # Create a new directory for this PR
@@ -82,7 +82,7 @@ jobs:
             const repoOwner = context.repo.owner;
             const repoName = context.repo.repo;
             const deployUrl = `https://${repoOwner}.github.io/${repoName}/pr-${prNumber}-${commitSha}/`;
-            const teardownUrl = `https://github.com/${repoOwner}/${repoName}/actions/workflows/teardown-preview.yml/dispatch?pr_number=${prNumber}&commit_sha=${commitSha}`;
+            const teardownUrl = `https://github.com/${repoOwner}/${repoName}/actions/workflows/teardown.yml/dispatch?pr_number=${prNumber}&commit_sha=${commitSha}`;
             github.issues.createComment({
               issue_number: prNumber,
               owner: repoOwner,

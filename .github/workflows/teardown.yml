@@ -42,7 +42,7 @@ jobs:
           git fetch origin gh-pages:gh-pages
 
           # Clone the existing gh-pages branch
-          git clone --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository_name }}.git gh-pages
+          git clone --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/saichandras/saichandras.github.io.git gh-pages
           cd gh-pages
 
           # Remove the directory for this PR
