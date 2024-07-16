@@ -22,13 +22,13 @@ const Hero = () => {
           <p className={`${styles.heroSubText} text-white-100`}>
             I develop and maintain customer-facing web apps and operational data management systems.
           </p>
-          <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
+          {/* <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
             {social_icons.map((icon) => (
               <div key={icon.name} className="w-[50px] h-[50px] mt-7">
                 <SocialIconCanvas link={icon.link} iconPath={icon.icon_path} args={icon.args} />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="pt-2" />
