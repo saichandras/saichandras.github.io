@@ -1,12 +1,18 @@
-name: PR Deploy to Surge
+name: PR Deploy to GitHub Pages
 
 on:
   pull_request:
-    branches: ['master']
+    branches:
+      - '*'
+  push:
+    branches:
+      - '**'
 
 permissions:
   contents: read
   pull-requests: write
+  pages: write
+  id-token: write
 
 jobs:
   preview:
@@ -17,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -29,21 +35,48 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Surge
+      - name: Deploy to GitHub Pages
         env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install -g surge
-          surge ./dist --domain ${{ github.sha }}-saichandras.surge.sh
+          PR_NUMBER=${{ github.event.pull_request.number || github.event.number }}
+          COMMIT_SHA=${{ github.sha }}
+          DEPLOY_DIR="pr-${PR_NUMBER}-${COMMIT_SHA}"
+
+          # Configure git
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Fetch gh-pages branch
+          git fetch origin gh-pages:gh-pages
+
+          # Clone the existing gh-pages branch
+          git clone --branch=gh-pages https://github.com/${{ github.repository_owner }}/${{ github.repository_name }}.git gh-pages
+          cd gh-pages
+
+          # Create a new directory for this PR
+          mkdir -p ${DEPLOY_DIR}
+          cp -r ../dist/* ${DEPLOY_DIR}
+
+          # Commit and push the changes
+          git add .
+          git commit -m "Deploy preview for PR #${PR_NUMBER} - ${COMMIT_SHA}"
+          git push origin gh-pages
 
       - name: Post deployment URL as comment
-        uses: actions/github-script@v3
+        uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const prNumber = context.payload.pull_request ? context.payload.pull_request.number : context.payload.number;
+            const commitSha = context.sha;
+            const repoOwner = context.repo.owner;
+            const repoName = context.repo.repo;
+            const deployUrl = `https://${repoOwner}.github.io/${repoName}/pr-${prNumber}-${commitSha}/`;
+            const teardownUrl = `https://github.com/${repoOwner}/${repoName}/actions/workflows/teardown-preview.yml/dispatch?pr_number=${prNumber}&commit_sha=${commitSha}`;
             github.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${{ github.repository }}/actions/workflows/teardown.yml) and select "Run workflow" with the domain "https://${{ github.sha }}-saichandras.surge.sh".`
-            })
+              issue_number: prNumber,
+              owner: repoOwner,
+              repo: repoName,
+              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [teardown workflow](${teardownUrl}).`
+            });
