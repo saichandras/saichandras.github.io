@@ -623,7 +623,7 @@ const social_icons = [
     icon_path: './linkedin/linkedin1.gltf',
     link: 'https://www.linkedin.com/in/saichandras/',
     args: {
-      scale: 2.6,
+      scale: 2.65,
       position: [0, -3.3, 0],
     },
   },
