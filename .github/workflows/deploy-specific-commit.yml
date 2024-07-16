@@ -4,16 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       commit_sha:
-        description: "Commit SHA to deploy"
+        description: 'Commit SHA to deploy'
         required: true
       branch:
-        description: "Branch to checkout"
+        description: 'Branch to checkout'
         required: true
-        default: "main"
+        default: 'master'
 
 permissions:
-  pages: write
-  id-token: write
   contents: write
 
 jobs:
@@ -28,7 +26,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: '16'
 
       - name: Install dependencies
         run: npm ci
