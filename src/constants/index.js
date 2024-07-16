@@ -620,7 +620,7 @@ const projects = [
 const social_icons = [
   {
     name: 'LinkedIn',
-    icon_path: 'public/linkedin/linkedin1.gltf',
+    icon_path: './linkedin/linkedin1.gltf',
     link: 'https://www.linkedin.com/in/saichandras/',
     args: {
       scale: 2.6,
@@ -629,7 +629,7 @@ const social_icons = [
   },
   {
     name: 'GitHub',
-    icon_path: 'public/github/github1.gltf',
+    icon_path: './github/github1.gltf',
     link: 'https://github.com/saichandras',
     args: {
       scale: 1.85,
@@ -638,7 +638,7 @@ const social_icons = [
   },
   {
     name: 'Resume',
-    icon_path: 'public/resume/resume.gltf',
+    icon_path: './resume/resume.gltf',
     link: 'https://drive.google.com/file/d/1s6VpI7O_BdBWYc9vHlQvhb1I0-D_uZ2y/view?usp=sharing',
     args: {
       scale: 2.5,
