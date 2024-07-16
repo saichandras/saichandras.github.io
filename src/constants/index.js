@@ -617,4 +617,34 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+const social_icons = [
+  {
+    name: 'LinkedIn',
+    icon_path: 'public/linkedin/linkedin1.gltf',
+    link: 'https://www.linkedin.com/in/saichandras/',
+    args: {
+      scale: 2.6,
+      position: [0, -3.3, 0],
+    },
+  },
+  {
+    name: 'GitHub',
+    icon_path: 'public/github/github1.gltf',
+    link: 'https://github.com/saichandras',
+    args: {
+      scale: 1.85,
+      position: [0, -0.2, 0],
+    },
+  },
+  {
+    name: 'Resume',
+    icon_path: 'public/resume/resume.gltf',
+    link: 'https://drive.google.com/file/d/1s6VpI7O_BdBWYc9vHlQvhb1I0-D_uZ2y/view?usp=sharing',
+    args: {
+      scale: 2.5,
+      position: [0, -0.2, 0],
+    },
+  },
+];
+
+export { services, technologies, experiences, testimonials, projects, social_icons };

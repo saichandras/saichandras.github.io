@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import { styles } from '../styles';
-import { ComputersCanvas } from './canvas';
-import SocialLinks from './SocialLinks/SocialLinks';
+import SocialIconCanvas from './canvas/SocialIconCanvas';
+import { social_icons } from '../constants';
+import ComputersCanvas from './canvas/Computers';
 
 const Hero = () => {
   return (
@@ -21,7 +22,13 @@ const Hero = () => {
           <p className={`${styles.heroSubText} text-white-100`}>
             I develop and maintain customer-facing web apps and operational data management systems.
           </p>
-          <SocialLinks />
+          <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
+            {social_icons.map((icon) => (
+              <div key={icon.name} className="w-[50px] h-[50px] mt-7">
+                <SocialIconCanvas link={icon.link} iconPath={icon.icon_path} args={icon.args} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="pt-2" />
@@ -48,7 +55,5 @@ const Hero = () => {
     </section>
   );
 };
-
-Hero.propTypes = {};
 
 export default Hero;

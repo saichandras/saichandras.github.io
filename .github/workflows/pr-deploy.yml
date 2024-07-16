@@ -45,14 +45,5 @@ jobs:
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh`
+              body: `Preview deployment for this PR: https://${{ github.sha }}-saichandras.surge.sh\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${{ github.repository }}/actions/workflows/teardown.yml) and select "Run workflow" with the domain "https://${{ github.sha }}-saichandras.surge.sh".`
             })
-
-      - name: Save current SHA
-        run: echo "${{ github.sha }}" > sha.txt
-
-      - name: Upload current SHA
-        uses: actions/upload-artifact@v2
-        with:
-          name: commit-sha
-          path: sha.txt
