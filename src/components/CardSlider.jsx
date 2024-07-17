@@ -6,15 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const CardSlider = ({ images }) => {
   return (
-    <Swiper
-      className="xs:w-[300px] xs:h-[648px] w-[265px] h-[573px]"
-      effect={'cards'}
-      grabCursor={true}
-      modules={[EffectCards]}
-    >
+    <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards]}>
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <img className="w-full h-full" src={image} alt={`Slide ${index + 1}`} />
+          <img src={image} alt={`Slide ${index + 1}`} />
         </SwiperSlide>
       ))}
     </Swiper>
