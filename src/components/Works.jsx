@@ -8,9 +8,6 @@ import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
 import CardSlider from './CardSlider';
 
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-
 const ProjectCard = ({ index, name, description, tags, images, source_code_link }) => {
   return (
     <motion.div
