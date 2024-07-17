@@ -22,10 +22,21 @@ jobs:
           git fetch origin gh-pages-preview:gh-pages-preview
           git checkout gh-pages-preview
 
+      - name: List files before removal
+        run: |
+          echo "Listing files before removal:"
+          ls -al
+
       - name: Remove preview directory
         run: |
           DIR_TO_REMOVE=${{ github.event.inputs.directory }}
+          echo "Attempting to remove directory: ${DIR_TO_REMOVE}"
           rm -rf ${DIR_TO_REMOVE}
+
+      - name: List files after removal
+        run: |
+          echo "Listing files after removal:"
+          ls -al
 
       - name: Commit and push changes
         run: |
