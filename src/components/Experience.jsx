@@ -34,13 +34,11 @@ const ExperienceCard = ({ experience }) => {
       <div className="flex justify-between items-start">
         <div>
           <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-          <p className="text-secondary text-[18px] font-semibold" style={{ margin: 0 }}>
+          <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
             {experience.company_name}
           </p>
         </div>
-        <span className="text-secondary sm:text-[14.5px] text-[14px] pl-3 mt-2">
-          {experience.date}
-        </span>
+        <span className="text-secondary text-[14px]">{experience.date}</span>
       </div>
       <ul className="mt-5 list-disc ml-5 space-y-2">
         {experience.points.map((point, index) => (
@@ -52,6 +50,12 @@ const ExperienceCard = ({ experience }) => {
           </li>
         ))}
       </ul>
+      {/* {experience.tech_stack && experience.tech_stack.length > 0 && (
+        <div className="text-white font-light mt-4 font-sans text-[15px] tracking-wider">
+          <span className="font-semibold">Tech Stack: </span>
+          {experience.tech_stack.join(', ')}
+        </div>
+      )} */}
       {experience.tech_stack && experience.tech_stack.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">
           {experience.tech_stack.map((tech) => (
