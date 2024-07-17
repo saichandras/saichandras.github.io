@@ -3,8 +3,8 @@ name: Teardown Preview Deployment
 on:
   workflow_dispatch:
     inputs:
-      deploy_dir:
-        description: 'Directory to teardown'
+      directory:
+        description: 'Directory to remove'
         required: true
 
 permissions:
@@ -14,17 +14,34 @@ jobs:
   teardown:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure git
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Fetch gh-pages-preview branch
+        run: |
+          git fetch origin gh-pages-preview:gh-pages-preview
+          git checkout gh-pages-preview
+
+      - name: List files before removal
+        run: |
+          echo "Listing files before removal:"
+          ls -al
+
+      - name: Remove preview directory
+        run: |
+          DIR_TO_REMOVE=${{ github.event.inputs.directory }}
+          echo "Attempting to remove directory: ${DIR_TO_REMOVE}"
+          rm -rf ${DIR_TO_REMOVE}
+
+      - name: List files after removal
+        run: |
+          echo "Listing files after removal:"
+          ls -al
+
+      - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Clone Preview Repository
-        env:
-          GH_PREVIEW_TOKEN: ${{ secrets.GH_PREVIEW_TOKEN }}
-        run: |
-          git clone https://x-access-token:${{ secrets.GH_PREVIEW_TOKEN }}@github.com/saichandras/saichandras-preview.git
-          cd saichandras-preview
-          git rm -rf ${{ github.event.inputs.deploy_dir }}
-          git commit -m "Teardown preview deployment for directory ${{ github.event.inputs.deploy_dir }}"
-          git push origin main
+          git add .
+          git commit -m "Remove preview directory ${{ github.event.inputs.directory }}"
+          git push origin gh-pages-preview
