@@ -19,7 +19,7 @@ const ProjectCard = ({ index, name, description, tags, images, source_code_link 
       viewport={{ once: true, amount: 0.01 }}
       variants={fadeIn('up', 'spring', index * 0.1, 0.55)}
     >
-      <div className="bg-tertiary p-5 rounded-2xl xs:w-[410px] md:w-[400px] w-[362px]">
+      <div className="bg-tertiary p-5 rounded-2xl md:w-[370px] xs:w-[320px] w-full">
         <div className="relative w-full h-full mb-6">
           <CardSlider images={images} />
         </div>
