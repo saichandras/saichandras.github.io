@@ -62,10 +62,10 @@ jobs:
             const prNumber = context.payload.pull_request.number;
             const commitSha = context.sha;
             const repoOwner = context.repo.owner;
-            const deployUrl = `https://${repoOwner}.github.io/saichandras-preview/pr-${prNumber}-${commitSha}/`;
+            const deployUrl = `https://github.com/${repoOwner}/saichandras-preview/pr-${prNumber}-${commitSha}/`;
             github.issues.createComment({
               issue_number: prNumber,
               owner: repoOwner,
               repo: context.repo.repo,
-              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/${context.repo.repo}/actions/workflows/teardown-preview.yml) and select "Run workflow" with the domain "pr-${prNumber}-${commitSha}".`
+              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/${context.repo.repo}/actions/workflows/teardown-preview.yml) and select "Run workflow" with the directory name "pr-${prNumber}-${commitSha}".`
             });
