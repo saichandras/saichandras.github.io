@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from 'react';
 import CanvasLoader from '../Loader';
 
 const Computers = ({ isMobile }) => {
-  const { scene } = useGLTF('./desktop_pc/scene.gltf');
+  const { scene } = useGLTF('/desktop_pc/scene.gltf');
   return (
     <mesh>
       <hemisphereLight intensity={3.5} groundColor="black" />
