@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
-import './CardSlider.css';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 

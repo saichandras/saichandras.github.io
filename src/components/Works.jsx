@@ -6,10 +6,7 @@ import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
-import CardSlider from './CardSlider/CardSlider';
-
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+import CardSlider from './CardSlider';
 
 const ProjectCard = ({ index, name, description, tags, images, source_code_link }) => {
   return (
