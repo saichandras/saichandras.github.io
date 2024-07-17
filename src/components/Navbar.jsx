@@ -31,7 +31,7 @@ const Navbar = () => {
         isVisible ? 'transform translate-y-0' : 'transform -translate-y-full'
       }`}
     >
-      <div className="max-w-7xl w-full flex justify-between items-center px-4 sm:px-6 lg:px-8 py-3">
+      <div className="max-w-7xl w-full mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 py-3">
         <Link
           to="/"
           className="flex items-center gap-2"
