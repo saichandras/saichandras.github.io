@@ -67,5 +67,5 @@ jobs:
               issue_number: prNumber,
               owner: repoOwner,
               repo: context.repo.repo,
-              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/${context.repo.repo}/actions/workflows/teardown-preview.yml) and select "Run workflow" with the directory name "pr-${prNumber}-${commitSha}".`
+              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/saichandras-preview/actions/workflows/teardown-preview.yml) and select "Run workflow" with the directory name "pr-${prNumber}-${commitSha}".`
             });
