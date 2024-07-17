@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to GitHub Pages Preview
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PREVIEW_TOKEN: ${{ secrets.GH_PREVIEW_TOKEN }}
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           COMMIT_SHA=${{ github.sha }}
@@ -45,7 +46,7 @@ jobs:
           git fetch origin gh-pages-preview:gh-pages-preview
 
           # Clone the gh-pages-preview branch
-          git clone --branch=gh-pages-preview https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/saichandras/saichandras.github.io.git gh-pages-preview
+          git clone --branch=gh-pages-preview https://x-access-token:${{ secrets.GH_PREVIEW_TOKEN }}@github.com/saichandras/saichandras.github.io.git gh-pages-preview
           cd gh-pages-preview
 
           # Create a new directory for this PR
