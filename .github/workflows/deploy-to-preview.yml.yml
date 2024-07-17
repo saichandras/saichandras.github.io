@@ -1,4 +1,4 @@
-name: PR Deploy to Preview Repository
+name: PR Deploy to GitHub Pages Preview
 
 on:
   pull_request:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -29,9 +29,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Preview Repository
+      - name: Deploy to GitHub Pages Preview
         env:
-          GH_PREVIEW_TOKEN: ${{ secrets.GH_PREVIEW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           COMMIT_SHA=${{ github.sha }}
@@ -41,9 +41,12 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Clone the preview repository
-          git clone https://x-access-token:${{ secrets.GH_PREVIEW_TOKEN }}@github.com/saichandras/saichandras-preview.git
-          cd saichandras-preview
+          # Fetch the gh-pages-preview branch
+          git fetch origin gh-pages-preview:gh-pages-preview
+
+          # Clone the gh-pages-preview branch
+          git clone --branch=gh-pages-preview https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository }}.git gh-pages-preview
+          cd gh-pages-preview
 
           # Create a new directory for this PR
           mkdir -p ${DEPLOY_DIR}
@@ -52,7 +55,7 @@ jobs:
           # Commit and push the changes
           git add .
           git commit -m "Deploy preview for PR #${PR_NUMBER} - ${COMMIT_SHA}"
-          git push origin main
+          git push origin gh-pages-preview
 
       - name: Post deployment URL as comment
         uses: actions/github-script@v3
@@ -62,10 +65,10 @@ jobs:
             const prNumber = context.payload.pull_request.number;
             const commitSha = context.sha;
             const repoOwner = context.repo.owner;
-            const deployUrl = `https://github.com/${repoOwner}/saichandras-preview/pr-${prNumber}-${commitSha}/`;
+            const deployUrl = `https://${repoOwner}.github.io/${context.repo.repo}/pr-${prNumber}-${commitSha}/`;
             github.issues.createComment({
               issue_number: prNumber,
               owner: repoOwner,
               repo: context.repo.repo,
-              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/saichandras-preview/actions/workflows/teardown-preview.yml) and select "Run workflow" with the directory name "pr-${prNumber}-${commitSha}".`
+              body: `Preview deployment for this PR: [${deployUrl}](${deployUrl})\n\nTo teardown this deployment, go to the [Actions tab](https://github.com/${repoOwner}/${context.repo.repo}/actions/workflows/teardown-preview.yml) and select "Run workflow" with the directory name "pr-${prNumber}-${commitSha}".`
             });

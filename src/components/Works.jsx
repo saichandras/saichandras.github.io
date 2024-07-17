@@ -6,7 +6,7 @@ import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
-import CardSlider from './CardSlider/CardSlider';
+import CardSlider from './CardSlider';
 
 import 'swiper/css';
 import 'swiper/css/effect-cards';
