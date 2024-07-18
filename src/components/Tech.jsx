@@ -23,6 +23,7 @@ const Tech = () => {
             key={technology.name}
           >
             <Image
+              unoptimized
               src={technology.icon}
               alt={technology.name}
               className="sm:w-11 sm:h-11 w-10 h-10 object-contain"

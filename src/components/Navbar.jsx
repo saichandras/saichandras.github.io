@@ -43,7 +43,7 @@ const Navbar = () => {
             }}
             className="flex items-center gap-4"
           >
-            <Image src="/assets/s_logo.png" alt="logo" width={40} height={40} />
+            <Image unoptimized src="/assets/s_logo.png" alt="logo" width={40} height={40} />
             <p className="text-white text-[18px] font-bold cursor-pointer flex">
               <span>Sai Chandra</span>
               <span className="hidden md:inline-block pl-1.5 pr-1.5">|</span>
@@ -66,6 +66,7 @@ const Navbar = () => {
         </ul>
         <div className="md:hidden flex items-center">
           <Image
+            unoptimized
             src={toggle ? close : menu}
             alt="menu"
             className="w-[28px] h-[28px] object-contain cursor-pointer"

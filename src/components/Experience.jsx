@@ -34,6 +34,7 @@ const ExperienceCard = ({ experience }) => {
         <a href={experience.company_link} target="_blank">
           <div className="flex justify-center items-center w-full h-full">
             <Image
+              unoptimized
               src={experience.icon}
               alt={experience.company_name}
               className="w-[75%] h-[75%] object-contain"

@@ -20,6 +20,7 @@
     "react-dom": "^18",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "sharp": "^0.33.4",
     "swiper": "^11.1.4",
     "three": "^0.166.1"
   },
