@@ -58,8 +58,8 @@ const About = () => {
         <br />
         Specializing in architecting <span className="font-bold">CI/CD pipelines</span> and
         implementing serverless solutions, I leverage containerization for seamless testing and
-        deployment, ensuring zero downtime and increased efficiency. I'm proficient in automating
-        infrastructure provisioning and management using{' '}
+        deployment, ensuring zero downtime and increased efficiency. I&lsquo;m proficient in
+        automating infrastructure provisioning and management using{' '}
         <span className="font-bold">Terraform</span>, configuring state management with{' '}
         <span className="font-bold">S3</span>, and streamlining deployment processes with{' '}
         <span className="font-bold">Jenkins</span> and{' '}
