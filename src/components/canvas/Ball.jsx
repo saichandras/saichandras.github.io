@@ -1,3 +1,5 @@
+'use client';
+
 import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';

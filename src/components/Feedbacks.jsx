@@ -1,10 +1,13 @@
+'use client';
+
 import { motion } from 'framer-motion';
 
 import PropTypes from 'prop-types';
 import { testimonials } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
+import { styles } from '../app/styles';
 import { fadeIn, textVariant } from '../utils/motion';
+import Image from 'next/image';
 
 const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => (
   <motion.div
@@ -26,7 +29,7 @@ const FeedbackCard = ({ index, testimonial, name, designation, company, image })
           </p>
         </div>
 
-        <img
+        <Image
           src={image}
           alt={`feedback_by-${name}`}
           className="w-10 h-10 rounded-full object-cover"

@@ -1,17 +1,29 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
+import { styles } from '../app/styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { textVariant } from '../utils/motion';
 import Point from './Point';
+import Image from 'next/image';
 
 const ExperienceCard = ({ experience }) => {
+  const [techStackClasses, setTechStackClasses] = useState([]);
+
+  useEffect(() => {
+    const classes = experience.tech_stack.map((tech) => getGradientClassFromString(tech));
+    setTechStackClasses(classes);
+  }, [experience.tech_stack]);
+
   return (
     <VerticalTimelineElement
+      visible
       contentStyle={{
         background: '#1d1836',
         color: '#fff',
@@ -21,7 +33,7 @@ const ExperienceCard = ({ experience }) => {
       icon={
         <a href={experience.company_link} target="_blank">
           <div className="flex justify-center items-center w-full h-full">
-            <img
+            <Image
               src={experience.icon}
               alt={experience.company_name}
               className="w-[75%] h-[75%] object-contain"
@@ -34,11 +46,13 @@ const ExperienceCard = ({ experience }) => {
       <div className="flex justify-between items-start">
         <div>
           <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-          <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
+          <p className="text-secondary text-[18px] font-semibold" style={{ margin: 0 }}>
             {experience.company_name}
           </p>
         </div>
-        <span className="text-secondary text-[14px]">{experience.date}</span>
+        <span className="text-secondary sm:text-[14.5px] text-[14px] pl-3 mt-2">
+          {experience.date}
+        </span>
       </div>
       <ul className="mt-5 list-disc ml-5 space-y-2">
         {experience.points.map((point, index) => (
@@ -50,16 +64,10 @@ const ExperienceCard = ({ experience }) => {
           </li>
         ))}
       </ul>
-      {/* {experience.tech_stack && experience.tech_stack.length > 0 && (
-        <div className="text-white font-light mt-4 font-sans text-[15px] tracking-wider">
-          <span className="font-semibold">Tech Stack: </span>
-          {experience.tech_stack.join(', ')}
-        </div>
-      )} */}
       {experience.tech_stack && experience.tech_stack.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">
-          {experience.tech_stack.map((tech) => (
-            <span key={`${tech}`} className={`text-[14px] ${getGradientClassFromString(tech)}`}>
+          {experience.tech_stack.map((tech, idx) => (
+            <span key={`${tech}`} className={`text-[14px] ${techStackClasses[idx]}`}>
               #{tech}
             </span>
           ))}

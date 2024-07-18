@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
+import './CardSlider.css';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image';
 
 const CardSlider = ({ images }) => {
   return (
@@ -14,7 +16,7 @@ const CardSlider = ({ images }) => {
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <img className="w-full h-full" src={image} alt={`Slide ${index + 1}`} />
+          <Image unoptimized className="w-full h-full" src={image} alt={`Slide ${index + 1}`} />
         </SwiperSlide>
       ))}
     </Swiper>

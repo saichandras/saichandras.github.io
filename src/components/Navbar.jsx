@@ -1,7 +1,10 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { close, logo, menu } from '../assets';
+import { close, logo, menu } from '../../public/assets';
 import { navLinks } from '../constants';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
@@ -32,20 +35,21 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl w-full mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 py-3">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive('');
-            window.scrollTo(0, 0);
-          }}
-        >
-          <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            <span>Sai Chandra</span>
-            <span className="hidden md:inline-block pl-1.5 pr-1.5">|</span>
-            <span className="hidden md:inline-block">Full Stack Engineer</span>
-          </p>
+        <Link href="/" legacyBehavior>
+          <a
+            onClick={() => {
+              setActive('');
+              window.scrollTo(0, 0);
+            }}
+            className="flex items-center gap-4"
+          >
+            <Image src="/assets/s_logo.png" alt="logo" width={40} height={40} />
+            <p className="text-white text-[18px] font-bold cursor-pointer flex">
+              <span>Sai Chandra</span>
+              <span className="hidden md:inline-block pl-1.5 pr-1.5">|</span>
+              <span className="hidden md:inline-block">Full Stack Engineer</span>
+            </p>
+          </a>
         </Link>
         <ul className="hidden md:flex flex-row gap-10">
           {navLinks.map((link) => (
@@ -61,7 +65,7 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="md:hidden flex items-center">
-          <img
+          <Image
             src={toggle ? close : menu}
             alt="menu"
             className="w-[28px] h-[28px] object-contain cursor-pointer"

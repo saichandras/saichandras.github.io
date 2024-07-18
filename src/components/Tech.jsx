@@ -1,7 +1,10 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { technologies } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn } from '../utils/motion';
+import Image from 'next/image';
 
 const Tech = () => {
   return (
@@ -19,7 +22,7 @@ const Tech = () => {
             rounded-xl transform transition-transform hover:scale-110 hover:shadow-xl"
             key={technology.name}
           >
-            <img
+            <Image
               src={technology.icon}
               alt={technology.name}
               className="sm:w-11 sm:h-11 w-10 h-10 object-contain"

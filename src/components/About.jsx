@@ -1,10 +1,13 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { Tilt } from 'react-tilt';
 import { services } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
+import { styles } from '../app/styles';
 import { fadeIn, textVariant } from '../utils/motion';
+import Image from 'next/image';
 
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt
@@ -20,7 +23,7 @@ const ServiceCard = ({ index, title, icon }) => (
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
       <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-        <img src={icon} alt="web-development" className="w-16 h-16 object-contain" />
+        <Image src={icon} alt="web-development" className="w-16 h-16 object-contain" />
         <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
       </div>
     </motion.div>
@@ -50,7 +53,8 @@ const About = () => {
         enhancing data analytics with refined NLP capabilities. My expertise lies in designing
         robust microservices architectures, configuring <span className="font-bold">NGINX</span> as
         a reverse proxy, and implementing secure authentication mechanisms using{' '}
-        <span className="font-bold">SSO</span> and <span className="font-bold">SAML</span>.<br />
+        <span className="font-bold">SSO</span> and <span className="font-bold">SAML</span>
+        .<br />
         <br />
         Specializing in architecting <span className="font-bold">CI/CD pipelines</span> and
         implementing serverless solutions, I leverage containerization for seamless testing and
@@ -67,7 +71,7 @@ const About = () => {
         improvements in user satisfaction and business outcomes.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-20 flex flex-wrap gap-10 justify-center items-center">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

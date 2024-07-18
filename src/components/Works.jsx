@@ -1,14 +1,19 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { github } from '../assets';
+import { github } from '../../public/assets';
 import { projects } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../styles';
+import { styles } from '../app/styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
-import CardSlider from './CardSlider';
+import CardSlider from './CardSlider/CardSlider';
+import Image from 'next/image';
 
 const ProjectCard = ({ index, name, description, tags, images, source_code_link }) => {
+  const tagClasses = tags.map((tag) => getGradientClassFromString(tag));
+
   return (
     <motion.div
       initial="hidden"
@@ -26,13 +31,13 @@ const ProjectCard = ({ index, name, description, tags, images, source_code_link 
             onClick={() => window.open(source_code_link, '_blank')}
             className="white-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
           >
-            <img src={github} alt="source code" className="w-[60%] h-[60%] object-contain" />
+            <Image src={github} alt="source code" className="w-[60%] h-[60%] object-contain" />
           </div>
         </div>
         <p className="mt-2 text-secondary text-[14.4px]">{description}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p key={`${tag}`} className={`text-[14px] ${getGradientClassFromString(tag)}`}>
+          {tags.map((tag, idx) => (
+            <p key={`${tag}`} className={`text-[14px] ${tagClasses[idx]}`}>
               #{tag}
             </p>
           ))}

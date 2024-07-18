@@ -1,3 +1,5 @@
+'use client';
+
 import PropTypes from 'prop-types';
 
 // Function to parse text with **bold** syntax

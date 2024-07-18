@@ -1,6 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { styles } from '../styles';
+import { styles } from '../app/styles';
 import { staggerContainer } from '../utils/motion';
 
 const SectionWrapper = (Component, idName) =>

@@ -23,15 +23,7 @@ const gradients = [
   'turquoise-text-gradient',
 ];
 
-// Function to shuffle the gradients array to add more randomness
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
-
+// Function to hash a string into an index for the gradient array
 const stringToHash = (str) => {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -41,8 +33,7 @@ const stringToHash = (str) => {
 };
 
 const hashToGradientClass = (hash) => {
-  const shuffledGradients = shuffleArray([...gradients]); // Shuffle gradients for each hash call
-  return shuffledGradients[Math.abs(hash) % shuffledGradients.length];
+  return gradients[Math.abs(hash) % gradients.length];
 };
 
 const getGradientClassFromString = (str) => {

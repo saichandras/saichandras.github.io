@@ -4,6 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +42,8 @@
 .hash-span {
   display: block;
   height: 80px;
-  margin-top: -60px;
+  margin-top: -80px;
+  visibility: hidden;
 }
 
 .black-gradient {
@@ -301,13 +328,6 @@
 .vertical-timeline-element-content .vertical-timeline-element-date {
   display: none;
   padding: 0;
-}
-
-.swiper-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
 }
 
 @media (max-width: 765px) {
