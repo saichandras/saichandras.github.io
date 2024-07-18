@@ -634,7 +634,7 @@ const social_icons = [
     icon_path: './github/github2.gltf',
     link: 'https://github.com/saichandras',
     args: {
-      scale: 0.98,
+      scale: 0.889,
       position: [0, -0.2, 0],
     },
   },
@@ -644,7 +644,7 @@ const social_icons = [
     link: 'https://drive.google.com/file/d/1s6VpI7O_BdBWYc9vHlQvhb1I0-D_uZ2y/view?usp=sharing',
     args: {
       scale: 1.25,
-      position: [0, -3.8, 0],
+      position: [0, -0.65, 0],
     },
   },
 ];
