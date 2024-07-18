@@ -54,7 +54,7 @@ const SocialIconCanvas = ({ link, iconPath, args }) => {
         position: [1, 3, 6],
       }}
     >
-      <Suspense fallback={<CanvasLoader />}>
+      <Suspense fallback={<CanvasLoader decimal={0} />}>
         <AutoRotatingControls
           autoRotate
           autoRotateSpeed={3}
