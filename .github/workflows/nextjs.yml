@@ -1,9 +1,10 @@
+# File: .github/workflows/publish.yml
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - master # Change this to your default branch
 
 permissions:
   contents: read
@@ -36,8 +37,8 @@ jobs:
       - name: Upload artifact 📡
         uses: actions/upload-artifact@v3
         with:
-          name: build
-          path: ./out
+          name: github-pages # Ensure this name matches the one used in the deploy job
+          path: out # Ensure this is the correct directory for your exported static site
 
   deploy:
     environment:
@@ -51,7 +52,7 @@ jobs:
       - name: Download artifact 📥
         uses: actions/download-artifact@v2
         with:
-          name: build
+          name: github-pages # Ensure this name matches the one used in the build job
 
       - name: Publish to GitHub Pages 🚀
         uses: actions/deploy-pages@v4
