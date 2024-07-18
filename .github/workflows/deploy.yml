@@ -1,4 +1,4 @@
-name: Deploy Next.js site to GitHub Pages
+name: Deploy Next.js App to GitHub Pages
 
 on:
   push:
@@ -9,20 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: "22.x"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Next.js site
-        run: npm run build
-
+          node-version: 14
+      - run: npm install
+      - run: npm run build
+      - run: npm run export
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
