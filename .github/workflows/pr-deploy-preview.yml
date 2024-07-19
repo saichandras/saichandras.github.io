@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
@@ -28,7 +28,7 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          npx surge ./dist --domain=https://${{ github.head_ref }}-saichandras-website.surge.sh
+          npx surge ./out --domain=https://${{ github.head_ref }}-saichandras-website.surge.sh
 
       - name: Comment on PR with deployment link
         uses: actions/github-script@v6
