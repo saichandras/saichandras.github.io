@@ -427,3 +427,7 @@ body {
     border-radius: 8px !important;
   }
 }
+
+.Toastify__toast-container {
+  width: 26rem !important;
+}
