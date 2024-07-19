@@ -27,6 +27,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Install Surge
+        run: npm install -g surge
+
       - name: Deploy to Surge
         run: |
           PR_NUMBER=$(echo ${GITHUB_REF} | sed 's/refs\/pull\///' | sed 's/\/merge//')
