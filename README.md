@@ -9,7 +9,7 @@ This is my personal portfolio website where I showcase my skills, projects, and 
 ## Technologies Used
 
 - **React:** A JavaScript library for building user interfaces.
-- **Vite:** A build tool that provides a faster and leaner development experience for modern web projects.
+- **Next.js:** A React framework that enables server-side rendering and generating static websites for React-based web applications.
 - **Three.js:** A JavaScript library used to create and display animated 3D graphics in the browser.
 - **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
 - **Framer Motion:** A library to power animations in React.
