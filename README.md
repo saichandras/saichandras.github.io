@@ -26,4 +26,4 @@ This is my personal portfolio website where I showcase my skills, projects, and 
 
 Sai Chandra - saichandrasriram42@gmail.com
 
-Project Link: [https://saichandras.netlify.app/](https://saichandras.netlify.app/)
+Project Link: [https://saichandras.github.io/](https://saichandras.github.io/)
