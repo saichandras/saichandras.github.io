@@ -1,66 +1,51 @@
 'use client';
 
 import emailjs from '@emailjs/browser';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 
-import { SectionWrapper } from '../hoc';
 import { styles } from '../app/styles';
+import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import { EarthCanvas } from './canvas';
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({
+
+  const initialValues = {
     name: '',
     email: '',
     message: '',
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email format').required('Email is required'),
+    message: Yup.string().required('Message is required'),
+  });
 
-    emailjs
-      .send(
-        'service_run5ctg',
-        'template_nnipbsm',
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
-          from_name: form.name,
+          from_name: values.name,
           to_name: 'Sai Chandra',
-          from_email: form.email,
+          from_email: values.email,
           to_email: 'saichandrasriram42@gmail.com',
-          message: form.message,
+          message: values.message,
         },
-        'xa7KvhEQukgrpTMnc',
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          });
-        },
-        (error) => {
-          setLoading(false);
-          alert('Something went wrong.');
-        },
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
       );
+      toast.success('Thank you. I will get back to you as soon as possible.', { icon: '🚀' });
+      resetForm();
+    } catch (error) {
+      toast.error('Something went wrong.');
+    }
   };
 
   return (
@@ -72,50 +57,58 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your email</span>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your web address?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Message</span>
-            <textarea
-              rows={7}
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-            />
-          </label>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className="mt-12 flex flex-col gap-8" noValidate>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Your Name</span>
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="What's your good name?"
+                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                />
+                <ErrorMessage name="name" component="div" className="text-red-500 mt-2" />
+              </label>
 
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-tertiary py-3 px-16 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
-            >
-              {loading ? 'Sending...' : 'Send'}
-            </button>
-          </div>
-        </form>
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Your email</span>
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="What's your web address?"
+                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500 mt-2" />
+              </label>
+
+              <label className="flex flex-col">
+                <span className="text-white font-medium mb-4">Your Message</span>
+                <Field
+                  as="textarea"
+                  rows={7}
+                  name="message"
+                  placeholder="What you want to say?"
+                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                />
+                <ErrorMessage name="message" component="div" className="text-red-500 mt-2" />
+              </label>
+
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="bg-tertiary py-3 px-16 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send'}
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </motion.div>
 
       <motion.div
