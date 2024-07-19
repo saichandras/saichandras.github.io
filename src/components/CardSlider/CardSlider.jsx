@@ -9,7 +9,7 @@ import Image from 'next/image';
 const CardSlider = ({ images }) => {
   return (
     <Swiper
-      className="xs:w-[300px] xs:h-[648px] w-[265px] h-[573px]"
+      className="xs:w-[320px] xs:h-[691px] w-[244px] h-[518px]"
       effect={'cards'}
       grabCursor={true}
       modules={[EffectCards]}
