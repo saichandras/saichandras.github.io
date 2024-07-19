@@ -1,0 +1,24 @@
+name: Teardown
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to teardown'
+        required: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  teardown:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Teardown Surge Deployment
+        run: |
+          DEPLOY_URL=https://pr-${{ github.event.inputs.pr_number }}-${GITHUB_REPOSITORY}.surge.sh
+          surge teardown $DEPLOY_URL --token ${{ secrets.SURGE_TOKEN }}
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
