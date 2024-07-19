@@ -18,7 +18,8 @@ jobs:
     steps:
       - name: Teardown Surge Deployment
         run: |
-          DEPLOY_URL=https://pr-${{ github.event.inputs.pr_number }}-${GITHUB_REPOSITORY}.surge.sh
+          REPO_NAME=$(echo ${GITHUB_REPOSITORY} | sed 's/\//-/g')
+          DEPLOY_URL=https://pr-${{ github.event.inputs.pr_number }}-$REPO_NAME.surge.sh
           surge teardown $DEPLOY_URL --token ${{ secrets.SURGE_TOKEN }}
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
