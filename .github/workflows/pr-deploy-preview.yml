@@ -1,51 +1,43 @@
-name: PR Deploy
+name: Deploy PR to Surge
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build the project
         run: npm run build
 
-      - name: Install Surge
-        run: npm install -g surge
-
       - name: Deploy to Surge
-        run: |
-          PR_NUMBER=$(echo ${GITHUB_REF} | sed 's/refs\/pull\///' | sed 's/\/merge//')
-          UNIQUE_HASH=$(date +%s) # This creates a unique timestamp-based hash
-          DEPLOY_URL=https://pr-$PR_NUMBER-$UNIQUE_HASH.surge.sh
-          surge ./out $DEPLOY_URL --token ${{ secrets.SURGE_TOKEN }}
         env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-
-      - name: Comment on PR
         run: |
-          PR_NUMBER=$(echo ${GITHUB_REF} | sed 's/refs\/pull\///' | sed 's/\/merge//')
-          UNIQUE_HASH=$(date +%s) # Ensure the same unique hash is used
-          DEPLOY_URL=https://pr-$PR_NUMBER-$UNIQUE_HASH.surge.sh
-          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -d "{\"body\": \"Preview URL: $DEPLOY_URL\"}" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npx surge ./dist --domain=https://${{ github.head_ref }}-saichandras-website.surge.sh
+
+      - name: Comment on PR with deployment link
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Deployed to Surge: https://${{ github.head_ref }}-saichandras-website.surge.sh`
+            })
