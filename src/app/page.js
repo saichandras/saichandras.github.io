@@ -1,4 +1,7 @@
 // src/app/page.js
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   About,
   Contact,
@@ -6,9 +9,9 @@ import {
   Feedbacks,
   Hero,
   Navbar,
+  StarsCanvas,
   Tech,
   Works,
-  StarsCanvas,
 } from '../components';
 
 export default function Home() {
@@ -27,6 +30,7 @@ export default function Home() {
         <Contact />
         <StarsCanvas />
       </div>
+      <ToastContainer position="bottom-center" transition={Zoom} />
     </div>
   );
 }

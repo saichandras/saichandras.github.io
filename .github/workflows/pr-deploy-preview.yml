@@ -21,6 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}" >> .env
+          echo "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}" >> .env
+          echo "NEXT_PUBLIC_EMAILJS_USER_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}" >> .env
+
       - name: Build the project
         run: npm run build
 
@@ -36,9 +42,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const prNumber = context.issue.number;
+            const repo = context.repo.repo;
+            const owner = context.repo.owner;
+            const deploymentUrl = `https://${{ github.head_ref }}-saichandras-website.surge.sh`;
+            const teardownUrl = `https://github.com/${owner}/${repo}/actions/workflows/teardown.yml/dispatch?pr_number=${prNumber}`;
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Deployed to Surge: https://${{ github.head_ref }}-saichandras-website.surge.sh`
+              issue_number: prNumber,
+              owner: owner,
+              repo: repo,
+              body: `Deployed to Surge: ${deploymentUrl}\n\n[Click here to teardown the deployment](${teardownUrl})`
             })
