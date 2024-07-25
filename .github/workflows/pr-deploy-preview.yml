@@ -30,12 +30,16 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Generate timestamp
+        id: vars
+        run: echo "timestamp=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
       - name: Deploy to Surge
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          npx surge ./out --domain=https://${{ github.head_ref }}-saichandras-website.surge.sh
+          npx surge ./out --domain=https://pr-${{ github.event.number }}-saichandras-website-${{ env.timestamp }}.surge.sh
 
       - name: Comment on PR with deployment link
         uses: actions/github-script@v6
@@ -45,11 +49,11 @@ jobs:
             const prNumber = context.issue.number;
             const repo = context.repo.repo;
             const owner = context.repo.owner;
-            const deploymentUrl = `https://${{ github.head_ref }}-saichandras-website.surge.sh`;
-            const teardownUrl = `https://github.com/${owner}/${repo}/actions/workflows/teardown.yml/dispatch?pr_number=${prNumber}`;
+            const deploymentUrl = `https://pr-${prNumber}-saichandras-website-${{ env.timestamp }}.surge.sh`;
+            const teardownUrl = `https://github.com/${owner}/${repo}/actions/workflows/teardown.yml/dispatch?inputs.pr_number=${prNumber}`;
             github.rest.issues.createComment({
               issue_number: prNumber,
               owner: owner,
               repo: repo,
               body: `Deployed to Surge: ${deploymentUrl}\n\n[Click here to teardown the deployment](${teardownUrl})`
-            })
+            });
