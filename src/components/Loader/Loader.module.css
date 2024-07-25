@@ -1,0 +1,40 @@
+.loaderConatiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.loader {
+  position: relative;
+  border-radius: 50%;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.loader::before {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
+  animation: load012323 0.5s infinite linear;
+}
+
+.loader::after {
+  width: 75%;
+  height: 75%;
+  background-color: #050816;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes load012323 {
+  to {
+    transform: rotate(360deg);
+  }
+}

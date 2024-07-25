@@ -1,11 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React from 'react';
 import { styles } from '../app/styles';
-import SocialIconCanvas from './canvas/SocialIconCanvas';
 import { social_icons } from '../constants';
-import ComputersCanvas from './canvas/Computers';
+import Dynamic3DLoader from './Dynamic3DLoader'; // Import the Dynamic3DLoader
 
 const Hero = () => {
   return (
@@ -27,7 +25,14 @@ const Hero = () => {
           <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
             {social_icons.map((icon) => (
               <div key={icon.name} className="w-[50px] h-[50px] mt-7 z-20">
-                <SocialIconCanvas link={icon.link} iconPath={icon.icon_path} args={icon.args} />
+                <Dynamic3DLoader
+                  componentPath="./canvas/SocialIconCanvas"
+                  link={icon.link}
+                  iconPath={icon.icon_path}
+                  args={icon.args}
+                  useLazy={false}
+                  loaderSize={25}
+                />
               </div>
             ))}
           </div>
@@ -35,7 +40,7 @@ const Hero = () => {
       </div>
       <div className="pt-2" />
       <div className="computers-canvas-container">
-        <ComputersCanvas />
+        <Dynamic3DLoader componentPath="./canvas/Computers" useLazy={false} />
       </div>
       <div
         className="absolute bottom-20 flex justify-center items-center z-20 ml-[50%]

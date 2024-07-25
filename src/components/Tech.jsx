@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { technologies } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn } from '../utils/motion';
-import Image from 'next/image';
+import DynamicImageLoader from './DynamicImageLoader';
 
 const Tech = () => {
   return (
@@ -22,7 +22,7 @@ const Tech = () => {
             rounded-xl transform transition-transform hover:scale-110 hover:shadow-xl"
             key={technology.name}
           >
-            <Image
+            <DynamicImageLoader
               unoptimized
               src={technology.icon}
               alt={technology.name}

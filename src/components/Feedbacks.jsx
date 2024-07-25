@@ -3,16 +3,16 @@
 import { motion } from 'framer-motion';
 
 import PropTypes from 'prop-types';
+import { styles } from '../app/styles';
 import { testimonials } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../app/styles';
 import { fadeIn, textVariant } from '../utils/motion';
-import Image from 'next/image';
+import DynamicImageLoader from './DynamicImageLoader';
 
-const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => (
+const FeedbackCard = ({ index, testimonial, name, connector, designation, company, image }) => (
   <motion.div
     variants={fadeIn('', 'spring', index * 0.5, 0.75)}
-    className="bg-black-200 p-10 rounded-3xl xs:w-[400px] w-full"
+    className="bg-black-200 p-10 rounded-3xl w-full"
   >
     <p className="text-white font-black text-[42px]">&ldquo;</p>
 
@@ -25,15 +25,17 @@ const FeedbackCard = ({ index, testimonial, name, designation, company, image })
             <span className="blue-text-gradient">@</span> {name}
           </p>
           <p className="mt-1 text-secondary text-[12px]">
-            {designation} of {company}
+            {designation} {connector} {company}
           </p>
         </div>
-
-        <Image
+        <DynamicImageLoader
           unoptimized
           src={image}
           alt={`feedback_by-${name}`}
-          className="w-10 h-10 rounded-full object-cover"
+          className="rounded-full object-cover"
+          width={40}
+          height={40}
+          useLazy={false}
         />
       </div>
     </div>
@@ -58,7 +60,7 @@ const Feedbacks = () => {
           <h2 className={styles.sectionHeadText}>Testimonials.</h2>
         </motion.div>
       </div>
-      <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-7 justify-center`}>
+      <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-16 justify-center`}>
         {testimonials.map((testimonial, index) => (
           <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
         ))}

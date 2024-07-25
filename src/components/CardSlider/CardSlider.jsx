@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
-import './CardSlider.css';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from 'next/image';
+import DynamicImageLoader from '../DynamicImageLoader';
+import './CardSlider.css';
 
 const CardSlider = ({ images }) => {
   return (
@@ -16,7 +16,13 @@ const CardSlider = ({ images }) => {
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <Image unoptimized className="w-full h-full" src={image} alt={`Slide ${index + 1}`} />
+          <DynamicImageLoader
+            unoptimized
+            className="w-full h-full"
+            src={image}
+            alt={`Slide ${index + 1}`}
+            useLazy={false}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
