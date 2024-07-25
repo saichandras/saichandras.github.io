@@ -1,11 +1,11 @@
-import logo from './s_logo.png';
 import backend from './backend.png';
+import close from './close.svg';
 import creator from './creator.png';
-import mobile from './mobile.png';
-import web from './web.png';
 import github from './github.png';
 import menu from './menu.svg';
-import close from './close.svg';
+import mobile from './mobile.png';
+import logo from './s_logo.png';
+import web from './web.png';
 
 import algolia from './tech/algolia.png';
 import android from './tech/android.png';
@@ -26,6 +26,7 @@ import fusejs from './tech/fusejs.png';
 import gcp from './tech/gcp.png';
 import git from './tech/git.png';
 import githubTech from './tech/github.png';
+import gitlab from './tech/gitlab.png';
 import go from './tech/Go.png';
 import html from './tech/html.png';
 import html_svg from './tech/html.svg';
@@ -66,13 +67,12 @@ import threejs from './tech/threejs.svg';
 import typescript from './tech/typescript.png';
 import vscode from './tech/vscode.png';
 import xcode from './tech/xcode.png';
-import gitlab from './tech/gitlab.png';
 
-import paradigm_logo from './company/paradigm-logo.png';
-import datachat_logo from './company/datachat_logo.png';
-import the_nine_logo from './company/the_nine_logo.png';
 import carlin_fit_llc_logo from './company/carlin_fit_llc_logo.png';
+import datachat_logo from './company/datachat_logo.png';
 import infosys_logo from './company/infosys_logo.png';
+import paradigm_logo from './company/paradigm-logo.png';
+import the_nine_logo from './company/the_nine_logo.png';
 
 import tracker_1 from './projects/tracker_1.gif';
 import tracker_2 from './projects/tracker_2.gif';
@@ -86,43 +86,48 @@ import blogs_1 from './projects/blogs_1.gif';
 import blogs_2 from './projects/blogs_2.gif';
 import blogs_3 from './projects/blogs_3.gif';
 
-import tictactoe from './projects/TicTacToe.gif';
-import target_sum from './projects/target_sum.gif';
 import food_app from './projects/Food_App.gif';
+import target_sum from './projects/target_sum.gif';
+import tictactoe from './projects/TicTacToe.gif';
 
 import samantha_carlin from './testimonials/samantha_carlin.jpeg';
+import shreya_nayak from './testimonials/shreya_nayak.jpeg';
 
 export {
-  logo,
-  backend,
-  creator,
-  mobile,
-  web,
-  github,
-  menu,
-  close,
   algolia,
   android,
   angular,
   aws,
+  backend,
+  blogs_1,
+  blogs_2,
+  blogs_3,
   bootstrap,
   c,
+  carlin_fit_llc_logo,
   circleci,
+  close,
+  creator,
   css,
   cypressjs,
+  datachat_logo,
   docker,
   echarts,
   electrode_native,
   expressjs,
   figma,
   flask,
+  food_app,
   fusejs,
   gcp,
   git,
+  github,
   githubTech,
+  gitlab,
   go,
   html,
   html_svg,
+  infosys_logo,
   java,
   javascript,
   jetbrains,
@@ -131,6 +136,12 @@ export {
   jwt,
   kotlin,
   laravel,
+  logo,
+  meals_1,
+  meals_2,
+  meals_3,
+  menu,
+  mobile,
   mongodb,
   mongoose,
   mui,
@@ -138,6 +149,7 @@ export {
   nextjs,
   nodejs,
   oracle_db,
+  paradigm_logo,
   php,
   pl_sql,
   postgresql,
@@ -149,34 +161,24 @@ export {
   redis,
   redux,
   reduxSaga,
+  samantha_carlin,
   saml,
+  shreya_nayak,
   sql_server,
   sqla,
-  gitlab,
   sso,
   swift,
   tailwind,
+  target_sum,
   terraform,
-  threejs,
-  typescript,
-  vscode,
-  xcode,
-  paradigm_logo,
-  datachat_logo,
   the_nine_logo,
-  carlin_fit_llc_logo,
-  infosys_logo,
+  threejs,
+  tictactoe,
   tracker_1,
   tracker_2,
   tracker_3,
-  meals_1,
-  meals_2,
-  meals_3,
-  blogs_1,
-  blogs_2,
-  blogs_3,
-  tictactoe,
-  target_sum,
-  food_app,
-  samantha_carlin,
+  typescript,
+  vscode,
+  web,
+  xcode,
 };
