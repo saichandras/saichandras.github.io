@@ -326,14 +326,14 @@ body {
 
 /* Custom styles */
 .vertical-timeline-element-content .vertical-timeline-element-date {
-  display: none;
-  padding: 0;
+  display: none !important;
+  padding: 0 !important;
 }
 
 @media (max-width: 765px) {
   .vertical-timeline-element-content .vertical-timeline-element-date,
   .vertical-timeline-element-content p {
-    font-size: 15px;
+    font-size: 15px !important;
   }
 }
 

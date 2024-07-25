@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useRef, Suspense } from 'react';
+import { PointMaterial, Points, Preload } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Preload } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
+import { useRef, useState } from 'react';
 
 const Stars = (props) => {
   const ref = useRef();
@@ -35,9 +35,7 @@ const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
+        <Stars />
         <Preload all />
       </Canvas>
     </div>

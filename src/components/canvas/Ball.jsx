@@ -3,9 +3,6 @@
 import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
-import { Suspense } from 'react';
-
-import CanvasLoader from '../Loader';
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
@@ -36,11 +33,8 @@ Ball.propTypes = {
 const BallCanvas = ({ icon }) => {
   return (
     <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
-
+      <OrbitControls enableZoom={false} />
+      <Ball imgUrl={icon} />
       <Preload all />
     </Canvas>
   );

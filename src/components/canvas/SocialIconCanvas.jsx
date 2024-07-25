@@ -1,9 +1,8 @@
 'use client';
 
-import React, { Suspense, useRef, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
-import CanvasLoader from '../Loader';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useEffect, useRef } from 'react';
 
 const SocialIcon = ({ link, iconPath, args }) => {
   const { scene } = useGLTF(iconPath);
@@ -54,19 +53,17 @@ const SocialIconCanvas = ({ link, iconPath, args }) => {
         position: [1, 3, 6],
       }}
     >
-      <Suspense fallback={<CanvasLoader decimal={0} />}>
-        <AutoRotatingControls
-          autoRotate
-          autoRotateSpeed={3}
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-          enableDamping
-          dampingFactor={0.1}
-        />
-        <SocialIcon link={link} iconPath={iconPath} args={args} />
-        <Preload all />
-      </Suspense>
+      <AutoRotatingControls
+        autoRotate
+        autoRotateSpeed={3}
+        enableZoom={false}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 2}
+        enableDamping
+        dampingFactor={0.1}
+      />
+      <SocialIcon link={link} iconPath={iconPath} args={args} />
+      <Preload all />
     </Canvas>
   );
 };

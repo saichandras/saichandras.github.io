@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { github } from '../../public/assets';
+import { styles } from '../app/styles';
 import { projects } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../app/styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
 import CardSlider from './CardSlider/CardSlider';
-import Image from 'next/image';
+import DynamicImageLoader from './DynamicImageLoader';
 
 const ProjectCard = ({ index, name, description, tags, images, source_code_link }) => {
   const tagClasses = tags.map((tag) => getGradientClassFromString(tag));
@@ -31,7 +31,7 @@ const ProjectCard = ({ index, name, description, tags, images, source_code_link 
             onClick={() => window.open(source_code_link, '_blank')}
             className="white-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
           >
-            <Image
+            <DynamicImageLoader
               unoptimized
               src={github}
               alt="source code"

@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import { styles } from '../app/styles';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import { EarthCanvas } from './canvas';
+import Dynamic3DLoader from './Dynamic3DLoader';
 
 const Contact = () => {
   const formRef = useRef();
@@ -124,7 +124,7 @@ const Contact = () => {
           self-center
         "
       >
-        <EarthCanvas />
+        <Dynamic3DLoader componentPath="./canvas/Earth" />
       </motion.div>
     </div>
   );

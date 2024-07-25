@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
+import { styles } from '../app/styles';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { styles } from '../app/styles';
 import { getGradientClassFromString } from '../utils/colors';
 import { textVariant } from '../utils/motion';
+import DynamicImageLoader from './DynamicImageLoader';
 import Point from './Point';
-import Image from 'next/image';
 
 const ExperienceCard = ({ experience }) => {
   const [techStackClasses, setTechStackClasses] = useState([]);
@@ -33,7 +33,7 @@ const ExperienceCard = ({ experience }) => {
       icon={
         <a href={experience.company_link} target="_blank">
           <div className="flex justify-center items-center w-full h-full">
-            <Image
+            <DynamicImageLoader
               unoptimized
               src={experience.icon}
               alt={experience.company_name}

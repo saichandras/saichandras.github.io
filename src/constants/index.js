@@ -87,6 +87,7 @@ import {
   target_sum,
   food_app,
   samantha_carlin,
+  shreya_nayak,
 } from '../../public/assets';
 
 export const navLinks = [
@@ -560,11 +561,21 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought launching Fit4Friends would be challenging, but Sai's enthusiasm and initiative transformed our app beyond expectations. His dedication and innovative ideas were a game-changer for our team morale and productivity.",
+      "Sai was a 2020 summer graduate intern at Carlin Fit LLC, and was responsible for improving upon our existing mobile application, Fit4Friends, and implementing new features to prepare the app for launch. Sai was genuinely excited by the work and always presented his updates with a high level of enthusiasm and pride, which positively contributed to the overall team moral! And if Sai ever didn't know how to do something, he would take the initiative to research it on his own and learn, which is a great quality to have in a team member! He loved brainstorming user stories, and was never afraid to share his thoughts in team discussions. ",
     name: 'Samantha Carlin',
     designation: 'CEO & Co-Founder',
+    connector: 'of',
     company: 'Carlin Fit LLC',
     image: samantha_carlin,
+  },
+  {
+    testimonial:
+      "I've had the pleasure of working with Sai on numerous projects, including our time together at Carlin Fit LLC. Sai's technical prowess and problem-solving skills are unparalleled. His ability to seamlessly collaborate and drive projects to successful completion is a testament to his expertise and dedication. Sai is not only a brilliant software engineer but also a supportive teammate who consistently goes above and beyond.",
+    name: 'Shreya Nayak',
+    designation: 'Software Engineer',
+    connector: 'at',
+    company: 'UNM Hospitals',
+    image: shreya_nayak,
   },
 ];
 
