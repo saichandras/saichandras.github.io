@@ -1,31 +1,9 @@
 'use client';
 
-import styles from './SplashLoader.module.css';
+import { useEffect, useState } from 'react';
+import styles from './SplashLoader.module.css'; // Import the CSS module
 
-const generateStars = () => {
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
-  let numStars;
-  let minStarSize;
-  let maxStarSize;
-
-  if (screenWidth < 768) {
-    // Small screens (e.g., mobile)
-    numStars = 100;
-    minStarSize = 1;
-    maxStarSize = 8;
-  } else if (screenWidth < 1200) {
-    // Medium screens (e.g., tablets)
-    numStars = 200;
-    minStarSize = 2;
-    maxStarSize = 8;
-  } else {
-    // Large screens (e.g., desktops)
-    numStars = 300;
-    minStarSize = 3;
-    maxStarSize = 12;
-  }
-
+const generateStars = (numStars, minStarSize, maxStarSize) => {
   const stars = [];
   for (let i = 0; i < numStars; i++) {
     const size = Math.random() * (maxStarSize - minStarSize) + minStarSize;
@@ -50,9 +28,38 @@ const generateStars = () => {
 };
 
 const SplashLoader = () => {
+  const [stars, setStars] = useState([]);
+
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    let numStars;
+    let minStarSize;
+    let maxStarSize;
+
+    if (screenWidth < 768) {
+      // Small screens (e.g., mobile)
+      numStars = 100;
+      minStarSize = 1;
+      maxStarSize = 8;
+    } else if (screenWidth < 1200) {
+      // Medium screens (e.g., tablets)
+      numStars = 200;
+      minStarSize = 2;
+      maxStarSize = 8;
+    } else {
+      // Large screens (e.g., desktops)
+      numStars = 300;
+      minStarSize = 3;
+      maxStarSize = 12;
+    }
+
+    setStars(generateStars(numStars, minStarSize, maxStarSize));
+  }, []);
+
   return (
     <div className={styles.mainLoadingConatiner}>
-      <div className={styles.boxOfStar}>{generateStars()}</div>
+      <div className={styles.backgroundImage}></div> {/* Background Image */}
+      <div className={styles.boxOfStar}>{stars}</div>
       <div className={styles.astronaut}>
         <div className={styles.head}></div>
         <div className={`${styles.arm} ${styles.armLeft}`}></div>
