@@ -1,5 +1,4 @@
 /* Main Loading Container */
-
 .mainLoadingConatiner {
   display: flex;
   flex-direction: column;
@@ -7,136 +6,42 @@
   align-items: center;
   background-color: #050816;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   position: relative;
 }
 
-/* Astronut Loading Indicator */
-@keyframes snow {
+/* Star Falling Animation */
+@keyframes fall {
   0% {
+    transform: translateY(-100vh);
     opacity: 0;
-    transform: translateY(0px);
   }
-
-  20% {
+  50% {
     opacity: 1;
   }
-
   100% {
-    opacity: 1;
-    transform: translateY(650px);
+    transform: translateY(100vh);
+    opacity: 0;
   }
 }
 
-@keyframes astronaut {
+/* Astronaut Rotation Animation */
+@keyframes rotateAstronaut {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
-.boxOfStar1,
-.boxOfStar2,
-.boxOfStar3,
-.boxOfStar4 {
-  width: 100%;
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  transform: translateY(0px);
-  height: 100vh;
-}
-
-.boxOfStar1 {
-  animation: snow 5s linear infinite;
-}
-
-.boxOfStar2 {
-  animation: snow 5s -1.64s linear infinite;
-}
-
-.boxOfStar3 {
-  animation: snow 5s -2.3s linear infinite;
-}
-
-.boxOfStar4 {
-  animation: snow 5s -3.3s linear infinite;
-}
-
 .star {
-  width: 3px;
-  height: 3px;
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
   z-index: 10;
-  opacity: 0.7;
-}
-
-.star:before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: absolute;
-  z-index: 10;
-  top: 80px;
-  left: 70px;
-  opacity: 0.7;
-}
-
-.star:after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: absolute;
-  z-index: 10;
-  top: 8px;
-  left: 170px;
-  opacity: 0.9;
-}
-
-.starPosition1 {
-  top: 30px;
-  left: 20px;
-}
-
-.starPosition2 {
-  top: 110px;
-  left: 250px;
-}
-
-.starPosition3 {
-  top: 60px;
-  left: 570px;
-}
-
-.starPosition4 {
-  top: 120px;
-  left: 900px;
-}
-
-.starPosition5 {
-  top: 20px;
-  left: 1120px;
-}
-
-.starPosition6 {
-  top: 90px;
-  left: 1280px;
-}
-
-.starPosition7 {
-  top: 30px;
-  left: 1480px;
+  animation: fall linear infinite;
 }
 
 .astronaut {
@@ -146,7 +51,7 @@
   z-index: 11;
   top: calc(50% - 150px);
   left: calc(50% - 125px);
-  animation: astronaut 5s linear infinite;
+  animation: rotateAstronaut 6s linear infinite; /* Adjusted duration for faster rotation */
 }
 
 .schoolbag {
@@ -342,7 +247,6 @@
 }
 
 /* Name Loading Indicator */
-
 .loadingConatiner {
   position: absolute;
   top: 73vh;
@@ -385,23 +289,18 @@
   0% {
     transform: translate(0);
   }
-
   20% {
     transform: translate(-3px, 3px);
   }
-
   40% {
     transform: translate(-3px, -3px);
   }
-
   60% {
     transform: translate(3px, 3px);
   }
-
   80% {
     transform: translate(3px, -3px);
   }
-
   to {
     transform: translate(0);
   }
@@ -419,31 +318,24 @@
   100% {
     transform: skewX(0deg);
   }
-
   41% {
     transform: skewX(10deg);
   }
-
   42% {
     transform: skewX(-10deg);
   }
-
   59% {
     transform: skewX(40deg) skewY(10deg);
   }
-
   60% {
     transform: skewX(-40deg) skewY(-10deg);
   }
-
   63% {
     transform: skewX(10deg) skewY(-5deg);
   }
-
   70% {
     transform: skewX(-50deg) skewY(-20deg);
   }
-
   71% {
     transform: skewX(10deg) skewY(-10deg);
   }
