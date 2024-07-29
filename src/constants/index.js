@@ -146,7 +146,7 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: 'SQLA',
+    name: 'SQLAlchemy',
     icon: sqla,
   },
   {

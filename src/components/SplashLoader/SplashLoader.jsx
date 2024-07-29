@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import styles from './SplashLoader.module.css'; // Import the CSS module
 
 const generateStars = (numStars, minStarSize, maxStarSize) => {
@@ -28,33 +28,11 @@ const generateStars = (numStars, minStarSize, maxStarSize) => {
 };
 
 const SplashLoader = () => {
-  const [stars, setStars] = useState([]);
+  const numStars = 200;
+  const minStarSize = 2;
+  const maxStarSize = 8;
 
-  useEffect(() => {
-    const screenWidth = window.innerWidth;
-    let numStars;
-    let minStarSize;
-    let maxStarSize;
-
-    if (screenWidth < 768) {
-      // Small screens (e.g., mobile)
-      numStars = 100;
-      minStarSize = 1;
-      maxStarSize = 8;
-    } else if (screenWidth < 1200) {
-      // Medium screens (e.g., tablets)
-      numStars = 200;
-      minStarSize = 2;
-      maxStarSize = 8;
-    } else {
-      // Large screens (e.g., desktops)
-      numStars = 300;
-      minStarSize = 3;
-      maxStarSize = 12;
-    }
-
-    setStars(generateStars(numStars, minStarSize, maxStarSize));
-  }, []);
+  const stars = useMemo(() => generateStars(numStars, minStarSize, maxStarSize), []);
 
   return (
     <div className={styles.mainLoadingConatiner}>
