@@ -60,7 +60,7 @@ const About = () => {
         enhancing data analytics with refined NLP capabilities. My expertise lies in designing
         robust microservices architectures, configuring <span className="font-bold">NGINX</span> as
         a reverse proxy, and implementing secure authentication mechanisms using{' '}
-        <span className="font-bold">SSO</span> and <span className="font-bold">SAML</span>
+        <span className="font-bold">SSO</span> using <span className="font-bold">OAuth</span>
         .<br />
         <br />
         Specializing in architecting <span className="font-bold">CI/CD pipelines</span> and
