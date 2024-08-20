@@ -38,7 +38,7 @@ const CardSlider = ({ images, variant = 'mobile' }) => {
       modules={swiperModules}
       centeredSlides={true}
       autoplay={{
-        delay: 3000,
+        delay: 8500,
         pauseOnMouseEnter: true,
       }}
       {...swiperProps}

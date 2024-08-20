@@ -590,6 +590,7 @@ const projects = [
       'Engineered a comprehensive healthcare patient management application that streamlines the process for patients to register, book, and manage appointments with doctors. Developed robust administrative tools for scheduling, confirming, and canceling appointments, providing administrators with full control over the appointment lifecycle. Integrated a user-friendly dashboard where patients can easily view, reschedule, or cancel their appointments. Enhanced the application with features such as secure user authentication, responsive UI design, and a sidebar for patients to update their information, schedule new appointments, and manage their profiles, significantly improving the overall user experience.',
     tags: [
       'Next.js',
+      'React',
       'ShadCN',
       'TailwindCSS',
       'Typescript',
