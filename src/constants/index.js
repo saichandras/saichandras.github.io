@@ -88,6 +88,10 @@ import {
   food_app,
   samantha_carlin,
   shreya_nayak,
+  admin,
+  singup,
+  user_dashboard,
+  registration_appointment,
 } from '../../public/assets';
 
 export const navLinks = [
@@ -581,12 +585,33 @@ const testimonials = [
 
 const projects = [
   {
+    name: 'Patient Management APP',
+    description:
+      'Engineered a comprehensive healthcare patient management application that streamlines the process for patients to register, book, and manage appointments with doctors. Developed robust administrative tools for scheduling, confirming, and canceling appointments, providing administrators with full control over the appointment lifecycle. Integrated a user-friendly dashboard where patients can easily view, reschedule, or cancel their appointments. Enhanced the application with features such as secure user authentication, responsive UI design, and a sidebar for patients to update their information, schedule new appointments, and manage their profiles, significantly improving the overall user experience.',
+    tags: [
+      'Next.js',
+      'React',
+      'ShadCN',
+      'TailwindCSS',
+      'Typescript',
+      'Prisma',
+      'PostgreSQL',
+      'Zod',
+      'JWT',
+      'Swiper',
+    ],
+    images: [user_dashboard, registration_appointment, singup, admin],
+    source_code_link: 'https://github.com/saichandras/carepulse',
+    variant: 'website',
+  },
+  {
     name: 'Tracker APP',
     description:
       'Developed a mobile app with real-time tracking and mapping of user paths, implementing polylines on maps to visualize the traversed route, and engineered a secure backend for user authentication, account management, and REST API endpoints to manage and synchronize track data.',
     tags: ['React Native', 'MongoDB', 'Mongoose', 'Express.js', 'Node.js', 'JWT'],
     images: [tracker_1, tracker_2, tracker_3],
     source_code_link: 'https://github.com/saichandras/TrackerApp',
+    variant: 'mobile',
   },
   {
     name: 'Meals APP',
@@ -595,6 +620,7 @@ const projects = [
     tags: ['React Native', 'React Redux'],
     images: [meals_1, meals_2, meals_3],
     source_code_link: 'https://github.com/saichandras/MealsApp',
+    variant: 'mobile',
   },
   {
     name: 'Blogs APP',
@@ -603,6 +629,7 @@ const projects = [
     tags: ['React Native', 'React Context', 'JSON API'],
     images: [blogs_1, blogs_2, blogs_3],
     source_code_link: 'https://github.com/saichandras/BlogApp',
+    variant: 'mobile',
   },
   {
     name: 'Tic Tac Toe',
@@ -611,6 +638,7 @@ const projects = [
     tags: ['Android Studio', 'Kotlin', 'Java'],
     images: [tictactoe],
     source_code_link: 'https://github.com/saichandras/TicTacToe',
+    variant: 'mobile',
   },
   {
     name: 'Search Restaurants',
@@ -619,6 +647,7 @@ const projects = [
     tags: ['React Native', 'React Redux', "Yelp API's"],
     images: [food_app],
     source_code_link: 'https://github.com/saichandras/RestaurantsApp',
+    variant: 'mobile',
   },
   {
     name: 'Target Sum',
@@ -627,6 +656,7 @@ const projects = [
     tags: ['React Native', 'React Context'],
     images: [target_sum],
     source_code_link: 'https://github.com/saichandras/TargetSum',
+    variant: 'mobile',
   },
 ];
 
