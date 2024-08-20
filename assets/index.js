@@ -93,6 +93,11 @@ import tictactoe from './projects/TicTacToe.gif';
 import samantha_carlin from './testimonials/samantha_carlin.jpeg';
 import shreya_nayak from './testimonials/shreya_nayak.jpeg';
 
+import admin from './projects/carepulse/admin.gif';
+import singup from './projects/carepulse/singup.gif';
+import registration_appointment from './projects/carepulse/registration_appointment.gif';
+import user_dashboard from './projects/carepulse/user_dashboard.gif';
+
 export {
   algolia,
   android,
@@ -181,4 +186,8 @@ export {
   vscode,
   web,
   xcode,
+  admin,
+  singup,
+  user_dashboard,
+  registration_appointment,
 };
