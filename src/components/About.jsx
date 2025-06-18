@@ -54,28 +54,49 @@ const About = () => {
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-secondary text-[17px] leading-[30px]"
       >
-        I have a strong track record of transforming complex applications into scalable SaaS
-        products, integrating advanced features like payment solutions with{' '}
-        <span className="font-bold">Stripe</span> and <span className="font-bold">PayPal</span>, and
-        enhancing data analytics with refined NLP capabilities. My expertise lies in designing
-        robust microservices architectures, configuring <span className="font-bold">NGINX</span> as
-        a reverse proxy, and implementing secure authentication mechanisms using{' '}
-        <span className="font-bold">SSO</span> using <span className="font-bold">OAuth</span>
-        .<br />
-        <br />
-        Specializing in architecting <span className="font-bold">CI/CD pipelines</span> and
-        implementing serverless solutions, I leverage containerization for seamless testing and
-        deployment, ensuring zero downtime and increased efficiency. I&lsquo;m proficient in
-        automating infrastructure provisioning and management using{' '}
-        <span className="font-bold">Terraform</span>, configuring state management with{' '}
-        <span className="font-bold">S3</span>, and streamlining deployment processes with{' '}
-        <span className="font-bold">Jenkins</span> and{' '}
-        <span className="font-bold">AWS CodePipeline</span>.<br />
-        <br />
-        With a strong background in developing advanced data visualization tools and integrating
-        innovative features, I continually improve data accessibility and decision-making. My work
-        consistently reduces operational costs, enhances system performance, and drives significant
-        improvements in user satisfaction and business outcomes.
+        <p>
+          I’m a <span class="font-bold">full stack engineer</span> with a track record of
+          <span class="font-bold">leading architecture</span> and
+          <span class="font-bold">implementation for scalable SaaS platforms</span> across
+          healthcare, analytics, and infrastructure-heavy domains. I operate at the intersection of{' '}
+          <span class="font-bold">engineering depth</span> and{' '}
+          <span class="font-bold">product impact</span>, transforming brittle systems into
+          performant, secure, and extensible platforms used at scale.
+        </p>
+
+        <p class="mt-4">
+          I specialize in <span class="font-bold">backend architecture</span>,
+          <span class="font-bold">CI/CD automation</span>, and
+          <span class="font-bold">cloud-native infrastructure</span>. My experience spans building{' '}
+          <span class="font-bold">resilient microservices</span> with Flask and Golang, designing
+          deployment pipelines with <span class="font-bold">Terraform</span> and
+          <span class="font-bold">AWS CodePipeline</span>, and orchestrating
+          <span class="font-bold">zero-downtime releases</span> across distributed systems. I’ve led{' '}
+          <span class="font-bold">platform migrations</span>, serverless system rollouts, and
+          cost-optimized infrastructure designs that serve millions of data records with high
+          availability.
+        </p>
+
+        <p class="mt-4">
+          At the application layer, I’ve architected{' '}
+          <span class="font-bold">HIPAA-compliant platforms</span>, built{' '}
+          <span class="font-bold">real-time engines</span> to process thousands of requests per
+          second, and integrated AI tooling like <span class="font-bold">LangChain</span> and local
+          LLMs to accelerate internal dev workflows. I’ve also delivered{' '}
+          <span class="font-bold">Stripe</span> and{' '}
+          <span class="font-bold">PayPal-based billing flows</span>,
+          <span class="font-bold">multi-tenant role systems</span>, and data pipelines that drive
+          reporting, compliance, and decision-making at scale.
+        </p>
+
+        <p class="mt-4">
+          I focus on delivering systems that are <span class="font-bold">testable</span>,
+          <span class="font-bold">observable</span>, and aligned with{' '}
+          <span class="font-bold">business outcomes</span>. Whether I’m unblocking teams with{' '}
+          <span class="font-bold">architectural direction</span> or pushing critical features to
+          production, I bring a <span class="font-bold">product-led mindset</span> backed by
+          <span class="font-bold">engineering excellence</span>.
+        </p>
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10 justify-center items-center">
