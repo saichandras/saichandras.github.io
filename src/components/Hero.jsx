@@ -20,7 +20,7 @@ const Hero = () => {
             Hi! I&lsquo;m <span className="text-[#915eff]">Sai Chandra</span>
           </h1>
           <p className={`${styles.heroSubText} text-white-100`}>
-            I develop and maintain customer-facing web apps and operational data management systems.
+            I build and scale customer-facing web apps and operational data systems with a focus on performance, security, and real-world impact.
           </p>
           <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
             {social_icons.map((icon) => (
