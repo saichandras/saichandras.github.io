@@ -357,14 +357,14 @@ const technologies = [
 
 const experiences = [
   {
-    title: 'Full Stack Engineer',
+    title: 'Full Stack AI Engineer',
     company_name: 'Paradigm Healthcare Services',
     company_link: 'https://paradigm-healthcare.com/',
     icon: paradigm_logo,
     iconBg: '#F7F7F7',
     date: 'February 2023 - Present',
     points: [
-      'Scaled a **Medicaid reimbursement platform** to support **1M+ student records** by modernizing backend architecture and aligning data models with evolving compliance standards across California school districts.',
+      'Scaled a **Medicaid reimbursement platform** to support **3M+ student records** by modernizing backend architecture and aligning data models with evolving compliance standards across California school districts.',
       'Unified fragmented service layers into a centralized **Flask + SQLAlchemy API gateway**, enabling seamless third-party integrations and improving scalability with **JWT authentication**, **rate limiting**, and **Swagger documentation**.',
       'Accelerated internal debugging and API tracing by embedding an **offline, HIPAA-compliant AI assistant** using **LangChain**, **FAISS**, and local **LLMs (Mistral, Code Llama)** for natural language code search.',
       'Delivered a **zero-touch PDF generation pipeline** producing **10K+ immunization cards/day** using **Redis**, **SQLAlchemy**, and Python PDF tooling libraries (**PyPDF2**, **pdfrw**).',
