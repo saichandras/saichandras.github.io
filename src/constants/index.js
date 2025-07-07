@@ -357,7 +357,7 @@ const technologies = [
 
 const experiences = [
   {
-    title: 'Full Stack Engineer',
+    title: 'Full Stack AI Engineer',
     company_name: 'Paradigm Healthcare Services',
     company_link: 'https://paradigm-healthcare.com/',
     icon: paradigm_logo,
