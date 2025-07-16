@@ -357,7 +357,7 @@ const technologies = [
 
 const experiences = [
   {
-    title: 'Full Stack AI Engineer',
+    title: 'Senior Full Stack Engineer',
     company_name: 'Paradigm Healthcare Services',
     company_link: 'https://paradigm-healthcare.com/',
     icon: paradigm_logo,
@@ -416,7 +416,7 @@ const experiences = [
     ],
   },
   {
-    title: 'Software Engineer',
+    title: 'Senior Software Engineer',
     company_name: 'DataChat Inc.',
     company_link: 'https://datachat.ai/',
     icon: datachat_logo,
@@ -477,7 +477,7 @@ const experiences = [
     ],
   },
   {
-    title: 'Full Stack Engineer',
+    title: 'Lead Full Stack Engineer',
     company_name: 'The Nine',
     company_link: 'https://www.nine.is/',
     icon: the_nine_logo,
@@ -503,7 +503,7 @@ const experiences = [
     ],
   },
   {
-    title: 'Software Engineer Graduate Intern',
+    title: 'Software Engineer Intern',
     company_name: 'Carlin Fit LLC',
     company_link: 'https://fit4friends.com/',
     icon: carlin_fit_llc_logo,
