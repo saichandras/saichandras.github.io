@@ -503,7 +503,7 @@ const experiences = [
     ],
   },
   {
-    title: 'Lead Software Engineer Intern',
+    title: 'Software Engineer Intern',
     company_name: 'Carlin Fit LLC',
     company_link: 'https://fit4friends.com/',
     icon: carlin_fit_llc_logo,
