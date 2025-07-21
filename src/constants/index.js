@@ -58,8 +58,7 @@ import {
   redis,
   redux,
   reduxSaga,
-  saml,
-  sql_server,
+  sql,
   sqla,
   sso,
   swift,
@@ -92,6 +91,24 @@ import {
   singup,
   user_dashboard,
   registration_appointment,
+  typeorm,
+  prisma,
+  radix_ui,
+  shadcn,
+  react_hook_form,
+  zod,
+  d3js,
+  langchain,
+  mistral,
+  selenium,
+  formik,
+  auth0,
+  stripe,
+  paypal,
+  kubernetes,
+  github_actions,
+  nginx,
+  new_relic,
 } from '../../public/assets';
 
 export const navLinks = [
@@ -133,97 +150,26 @@ const services = [
 ];
 
 const technologies = [
+  // Programming Languages
   {
     name: 'Python',
     icon: python,
   },
   {
-    name: 'Flask',
-    icon: flask,
+    name: 'TypeScript',
+    icon: typescript,
   },
   {
     name: 'JavaScript',
     icon: javascript,
   },
   {
-    name: 'MongoDB',
-    icon: mongodb,
-  },
-  {
-    name: 'SQLAlchemy',
-    icon: sqla,
-  },
-  {
     name: 'Go',
     icon: go,
   },
   {
-    name: 'MUI',
-    icon: mui,
-  },
-  {
-    name: 'Jinja',
-    icon: jinja,
-  },
-  {
-    name: 'Docker',
-    icon: docker,
-  },
-  {
-    name: 'SQL Server',
-    icon: sql_server,
-  },
-  {
-    name: 'Oracle DB',
-    icon: oracle_db,
-  },
-  {
-    name: 'PL/SQL',
-    icon: pl_sql,
-  },
-  {
-    name: 'Node JS',
-    icon: nodejs,
-  },
-  {
-    name: 'GitHub',
-    icon: githubTech,
-  },
-  {
-    name: 'HTML 5',
-    icon: html,
-  },
-  {
-    name: 'CSS 3',
-    icon: css,
-  },
-  {
-    name: 'Bootstrap',
-    icon: bootstrap,
-  },
-  {
-    name: 'VSCode',
-    icon: vscode,
-  },
-  {
-    name: 'JetBrains',
-    icon: jetbrains,
-  },
-  {
-    name: 'PostgreSQL',
-    icon: postgresql,
-  },
-  {
-    name: 'AWS',
-    icon: aws,
-  },
-  {
-    name: 'MySQL',
-    icon: mysql,
-  },
-  {
-    name: 'React JS',
-    icon: reactjs,
+    name: 'Swift',
+    icon: swift,
   },
   {
     name: 'Kotlin',
@@ -234,124 +180,276 @@ const technologies = [
     icon: java,
   },
   {
-    name: 'Xcode',
-    icon: xcode,
-  },
-  {
-    name: 'Swift',
-    icon: swift,
-  },
-  {
     name: 'C',
     icon: c,
-  },
-  {
-    name: 'JWT',
-    icon: jwt,
   },
   {
     name: 'PHP',
     icon: php,
   },
   {
-    name: 'Laravel',
-    icon: laravel,
+    name: 'SQL',
+    icon: sql,
+  },
+  {
+    name: 'PL/SQL',
+    icon: pl_sql,
+  },
+  {
+    name: 'HTML5',
+    icon: html,
+  },
+  {
+    name: 'CSS3',
+    icon: css,
+  },
+
+  // Frontend Frameworks & Libraries
+  {
+    name: 'React.js',
+    icon: reactjs,
   },
   {
     name: 'Next.js',
     icon: nextjs,
   },
   {
-    name: 'ExpressJS',
+    name: 'Redux-Saga',
+    icon: reduxSaga,
+  },
+
+  // Backend Frameworks
+  {
+    name: 'Flask',
+    icon: flask,
+  },
+  {
+    name: 'Node.js',
+    icon: nodejs,
+  },
+  {
+    name: 'Express.js',
     icon: expressjs,
   },
   {
-    name: 'CypressJS',
-    icon: cypressjs,
+    name: 'Laravel',
+    icon: laravel,
+  },
+
+  // Database & ORM
+  {
+    name: 'SQLAlchemy',
+    icon: sqla,
   },
   {
-    name: 'GitLab',
-    icon: gitlab,
+    name: 'TypeORM',
+    icon: typeorm,
   },
   {
-    name: 'Git',
-    icon: git,
+    name: 'Prisma',
+    icon: prisma,
   },
   {
-    name: 'FuseJS',
-    icon: fusejs,
+    name: 'Mongoose',
+    icon: mongoose,
+  },
+
+  // UI Libraries & Styling
+  {
+    name: 'Material-UI',
+    icon: mui,
   },
   {
-    name: 'ECharts',
-    icon: echarts,
-  },
-  {
-    name: 'Algolia',
-    icon: algolia,
-  },
-  {
-    name: 'CircleCI',
-    icon: circleci,
-  },
-  {
-    name: 'RabbitMQ',
-    icon: rabbitmq,
-  },
-  {
-    name: 'Electrode Native',
-    icon: electrode_native,
-  },
-  {
-    name: 'GCP',
-    icon: gcp,
-  },
-  {
-    name: 'SSO',
-    icon: sso,
-  },
-  {
-    name: 'SAML',
-    icon: saml,
+    name: 'Radix UI',
+    icon: radix_ui,
   },
   {
     name: 'Tailwind CSS',
     icon: tailwind,
   },
   {
+    name: 'ShadCN',
+    icon: shadcn,
+  },
+  {
+    name: 'Bootstrap',
+    icon: bootstrap,
+  },
+
+  // Form Handling & Validation
+  {
+    name: 'React Hook Form',
+    icon: react_hook_form,
+  },
+  {
+    name: 'Formik',
+    icon: formik,
+  },
+  {
+    name: 'Zod',
+    icon: zod,
+  },
+
+  // Data Visualization
+  {
+    name: 'D3.js',
+    icon: d3js,
+  },
+  {
+    name: 'ECharts',
+    icon: echarts,
+  },
+  {
+    name: 'Three.js',
+    icon: threejs,
+  },
+
+  // AI/ML & Search
+  {
+    name: 'LangChain',
+    icon: langchain,
+  },
+  {
+    name: 'Mistral',
+    icon: mistral,
+  },
+  {
+    name: 'Algolia',
+    icon: algolia,
+  },
+
+  // Testing
+  {
+    name: 'Cypress',
+    icon: cypressjs,
+  },
+  {
+    name: 'Selenium',
+    icon: selenium,
+  },
+
+  // Authentication & Payments
+  {
+    name: 'Auth0',
+    icon: auth0,
+  },
+  {
+    name: 'Stripe',
+    icon: stripe,
+  },
+  {
+    name: 'PayPal API',
+    icon: paypal,
+  },
+  {
+    name: 'JWT',
+    icon: jwt,
+  },
+
+  // Version Control & Development Tools
+  {
+    name: 'Git',
+    icon: git,
+  },
+  {
+    name: 'GitHub',
+    icon: githubTech,
+  },
+  {
+    name: 'GitLab',
+    icon: gitlab,
+  },
+  {
+    name: 'VSCode',
+    icon: vscode,
+  },
+  {
+    name: 'JetBrains',
+    icon: jetbrains,
+  },
+  {
+    name: 'Xcode',
+    icon: xcode,
+  },
+  {
+    name: 'Figma',
+    icon: figma,
+  },
+
+  // DevOps & Infrastructure
+  {
+    name: 'Docker',
+    icon: docker,
+  },
+  {
+    name: 'Kubernetes',
+    icon: kubernetes,
+  },
+  {
     name: 'Terraform',
     icon: terraform,
   },
   {
-    name: 'TypeScript',
-    icon: typescript,
+    name: 'GitHub Actions',
+    icon: github_actions,
+  },
+  {
+    name: 'CircleCI',
+    icon: circleci,
+  },
+  {
+    name: 'NGINX',
+    icon: nginx,
+  },
+  {
+    name: 'RabbitMQ',
+    icon: rabbitmq,
+  },
+  {
+    name: 'New Relic',
+    icon: new_relic,
+  },
+
+  // Databases
+  {
+    name: 'PostgreSQL',
+    icon: postgresql,
+  },
+  {
+    name: 'MySQL',
+    icon: mysql,
+  },
+  {
+    name: 'Oracle Database',
+    icon: oracle_db,
+  },
+  {
+    name: 'MongoDB',
+    icon: mongodb,
   },
   {
     name: 'Redis',
     icon: redis,
   },
+
+  // Cloud Services
   {
-    name: 'Redux',
-    icon: redux,
+    name: 'AWS',
+    icon: aws,
   },
   {
-    name: 'Redux Saga',
-    icon: reduxSaga,
+    name: 'Google Cloud Storage',
+    icon: gcp,
+  },
+
+  // Specialized Libraries
+  {
+    name: 'FuseJS',
+    icon: fusejs,
   },
   {
-    name: 'Mongoose',
-    icon: mongoose,
-  },
-  {
-    name: 'JSON',
-    icon: json,
-  },
-  {
-    name: 'Android',
-    icon: android,
-  },
-  {
-    name: 'Figma',
-    icon: figma,
+    name: 'Electrode Native',
+    icon: electrode_native,
   },
 ];
 
@@ -364,142 +462,140 @@ const experiences = [
     iconBg: '#F7F7F7',
     date: 'February 2023 - Present',
     points: [
-      'Scaled a **Medicaid reimbursement platform** to support **3M+ student records** by modernizing backend architecture and aligning data models with evolving compliance standards across California school districts.',
-      'Unified fragmented service layers into a centralized **Flask + SQLAlchemy API gateway**, enabling seamless third-party integrations and improving scalability with **JWT authentication**, **rate limiting**, and **Swagger documentation**.',
-      'Accelerated internal debugging and API tracing by embedding an **offline, HIPAA-compliant AI assistant** using **LangChain**, **FAISS**, and local **LLMs (Mistral, Code Llama)** for natural language code search.',
-      'Delivered a **zero-touch PDF generation pipeline** producing **10K+ immunization cards/day** using **Redis**, **SQLAlchemy**, and Python PDF tooling libraries (**PyPDF2**, **pdfrw**).',
-      'Replaced biweekly deploys with **same-day, zero-downtime releases** by implementing **blue-green CI/CD workflows** using **Jenkins** and **AWS CodePipeline**.',
-      'Reduced **operational costs by 40%** by implementing a **serverless notification system** with **AWS Lambda**, processing **1,000+ events/second** for real-time healthcare alerts.',
-      'Automated **real-time NPI validation** using a containerized **Selenium pipeline**, cutting manual QA effort by **80%** and preventing credential issues from reaching production.',
-      'Improved **API latency** by building **New Relic dashboards** that surfaced slow queries and bottlenecks without requiring deep infrastructure changes.',
-      'Built **reporting pipelines** in collaboration with Ops, Finance, and Product teams to identify reimbursement gaps, resulting in **$1M+ in Medicaid recovery** and improved district budget planning.',
+      'Architected **Student Health Network (SHN) platform** serving **3M+ students** across **50+ California school districts**, integrating **EHR management**, **Medicaid reimbursement**, and **CYBHI mental health billing** using **React**, **Flask**, **SQLAlchemy**, and **Oracle** while ensuring **FERPA/HIPAA compliance**.',
+      'Engineered **self-service API platform** empowering **15+ healthcare partners** to integrate student health data through **RESTful APIs**, featuring interactive documentation, usage analytics, and real-time status monitoring for **HIPAA-compliant data access**.',
+      'Developed **enterprise AI knowledge platform** using **React, LangChain, and vector embeddings**, enabling cross-functional teams to instantly search **500K+ lines of code** and healthcare datasets through natural language queries with **fully offline AI infrastructure**.',
+      'Designed **FERPA-compliant design system** with **React, ShadCN, and TypeScript**, creating reusable UI components for immunization tracking, health records, and Medicaid reporting with standardized form validation and audit-ready data entry workflows.',
+      'Led **enterprise GitLab to GitHub migration** for healthcare platform deployment, designing **full-stack CI/CD pipelines** that automated React component testing, Python API validation, and **HIPAA-compliant database migrations** across development, staging, and production environments.',
+      'Developed **EduClaim analytics dashboard** providing real-time billing insights for K-12 districts, featuring automated claims tracking and denial pattern analysis that **increased billing efficiency by 25%**.',
+      'Architected **application performance monitoring** using **New Relic APM** and custom alerting workflows, identifying memory leaks in Flask applications and implementing resource optimization that **reduced server costs by 40%** while supporting **2x traffic growth**.',
     ],
     tech_stack: [
-      'JavaScript',
+      'React.js',
       'TypeScript',
+      'JavaScript',
       'Flask',
-      'Flask-Mail',
-      'Jinja2',
-      'WTForms',
       'SQLAlchemy',
       'Python',
-      'JavaScript',
-      'jQuery',
-      'HTML',
-      'CSS',
-      'Bootstrap',
-      'Docker',
-      'Datatables.js',
-      'Chart.js',
-      'XlsxWriter',
-      'React.js',
-      'REST APIs',
-      'JSON',
-      'SQL',
+      'HTML5',
+      'CSS3',
+      'Tailwind CSS',
+      'ShadCN',
+      'Oracle',
       'PL/SQL',
-      'Oracle DB',
+      'PostgreSQL',
       'Redis',
-      'AWS (EC2, Lambda, S3)',
-      'CI/CD (Jenkins, AWS CodePipeline)',
+      'AWS (Lambda, EC2, S3, boto3)',
+      'Docker',
+      'Kubernetes',
+      'GitHub Actions',
       'Terraform',
       'New Relic',
       'Selenium',
-      'Jira',
-      'Agile',
-      'OOP',
+      'WebDriver Manager',
       'LangChain',
       'FAISS',
       'Mistral',
       'Code Llama',
-      'pdfrw',
+      'ECharts',
+      'REST APIs',
+      'JWT Authentication',
+      'CI/CD',
+      'Microservices Architecture',
+      'Git',
       'GitLab',
+      'Jira',
+      'Agile',
+      'OOP',
     ],
   },
   {
-    title: 'Senior Software Engineer',
+    title: 'Software Engineer',
     company_name: 'DataChat Inc.',
     company_link: 'https://datachat.ai/',
     icon: datachat_logo,
     iconBg: '#F7F7F7',
     date: 'July 2021 - January 2023',
     points: [
-      'Streamlined **data exploration for enterprise users** by building a full-stack analytics platform with **React.js**, **Go**, **Python**, and **SQLAlchemy**, enabling **natural language query-to-visualization workflows** that eliminated manual chart construction.',
-      'Eliminated **database integration bottlenecks** by building **test-before-connect architecture** in **Flask** and **Material-UI**, unlocking real-time visualization across **10+ cloud data sources**.',
-      'Improved **request throughput and system reliability** for multi-tenant users by migrating to a **microservices architecture** behind **NGINX**, tuning **caching** and load strategies to eliminate bottlenecks.',
-      'Improved usability of **natural language analytics** by building **30+ domain-aware commands** in the **Python-based NLP engine**, reducing query friction and enabling accurate, auto-completed prompts.',
-      'Transformed **isolated dashboards into collaborative workspaces** by shipping **25+ features** including **Algolia-based fuzzy search**, **cross-org chart sharing**, and **advanced filtering**.',
-      'Launched a **revenue-generating SaaS version of DataChat** by integrating **Stripe billing**, **Google SSO**, and **tiered subscription orchestration**, transforming it from an internal tool into a scalable commercial product.',
-      'Reduced **infrastructure setup time** by automating provisioning and state management using **Terraform** with **S3 backend configuration**.',
-      'Cut **deployment time by 50%** and enabled **zero-downtime releases** by integrating test-rich **CI/CD pipelines** using **CircleCI**, **Cypress**, and **Selenium**.',
-      'Enabled **reliable real-time communication across distributed services** by building a **RabbitMQ messaging system** over **AMQP**, orchestrating workflows and ensuring durable async message handling.',
+      'Streamlined **data exploration** for enterprise users by building **conversational AI analytics platform** with **React, Material-UI, Flask, Go, and SQLAlchemy**, enabling natural language query-to-visualization workflows with **100+ domain-aware commands** that eliminated manual chart construction',
+      'Launched **revenue-generating SaaS platform** by integrating **Stripe billing, Google SSO, and tiered subscription management**, transforming DataChat from internal tool into **commercial no-code analytics platform** serving **enterprise customers**',
+      'Eliminated **database integration bottlenecks** by building test-before-connect architecture, unlocking real-time visualization across **Snowflake, BigQuery, Redshift, Databricks, and 15+ other data sources** for no-code analytics',
+      'Engineered **enterprise collaboration features** with **Algolia-powered search**, enabling cross-organizational data sharing and advanced filtering capabilities, transforming individual dashboards into team workspaces used by business users',
+      'Automated **infrastructure provisioning** using **Terraform and AWS EKS**, implementing **multi-AZ Kubernetes clusters** with S3 state management that **reduced customer environment deployment from manual weeks to automated hours**',
+      'Developed **end-to-end testing infrastructure** using **Cypress and Go/Flask test suites**, validating conversational AI accuracy across **15+ data sources** with automated regression testing',
+      'Implemented **distributed messaging infrastructure** using **RabbitMQ and AMQP protocols**, implementing self-interrupting request optimization and async message handling that eliminated request bottlenecks for real-time analytics workloads',
     ],
     tech_stack: [
-      'JavaScript',
-      'TypeScript',
       'React.js',
+      'TypeScript',
+      'JavaScript',
       'Redux-Saga',
-      'MUI',
+      'Material-UI',
       'Formik',
       'Yup',
       'Python',
       'Flask',
-      'Golang',
+      'Go',
       'SQLAlchemy',
-      'SQL',
-      'REST APIs',
-      'Docker',
       'PostgreSQL',
-      'Redis',
-      'AWS (S3, DynamoDB)',
+      'D3.js',
+      'ECharts',
+      'REST APIs',
+      'OOP',
+      'HTML',
+      'CSS',
+      'Docker',
+      'Kubernetes',
+      'AWS EKS',
+      'S3',
       'Terraform',
-      'NGINX',
       'RabbitMQ',
-      'AMQP protocol',
+      'AMQP',
+      'NGINX',
+      'CI/CD',
       'CircleCI',
       'Cypress',
       'Selenium',
-      'NLP',
       'Algolia',
-      'ECharts',
-      'Fuse.js',
-      'Axios',
-      'Moment.js',
-      'Lodash',
-      'HTML',
-      'CSS',
-      'JSON',
-      'GitHub',
-      'SSO',
-      'SAML',
-      'Agile Methodologies',
-      'OOP',
-      'CI/CD',
+      'Stripe',
+      'Google SSO',
+      'Natural Language Processing',
+      'Microservices Architecture',
+      'Git',
+      'Agile',
     ],
   },
   {
-    title: 'Lead Full Stack Engineer',
+    title: 'Full Stack Engineer',
     company_name: 'The Nine',
     company_link: 'https://www.nine.is/',
     icon: the_nine_logo,
     iconBg: '#F7F7F7',
-    date: 'May 2021 - July 2021',
+    date: 'Jan 2021 - July 2021',
     points: [
-      'Led **end-to-end development** of a logistics recruitment platform used by **500+ trucking companies**, improving **job placement accuracy** and centralizing driver discovery at scale.',
-      'Improved **page load speed and responsiveness** by rebuilding the frontend with **React.js**, **Next.js**, and **Node.js**, replacing legacy native code for a modern, scalable UX.',
-      'Enhanced **job matching accuracy by 40%** by designing a **filtering engine** that connected **1,000+ users** with optimal logistics roles, streamlining driver-company placement.',
+      'Architected **logistics recruitment platform** using **Next.js, Material-UI, Express.js, TypeORM** serving **500+ trucking companies** with real-time job matching, driver analytics dashboards, and automated workflow management for the transportation industry',
+      'Optimized **platform performance by 60%** through **Next.js SSR implementation**, lazy loading, and API caching, **migrating legacy jQuery architecture** to modern component-based design with **microservices integration**',
+      'Developed **intelligent job matching algorithm** using **Express.js backend services**, analyzing driver qualifications, route preferences, and company requirements to **increase placement accuracy by 40%** for **1,000+ active drivers**',
     ],
     tech_stack: [
-      'JavaScript',
-      'React.js',
-      'Redux',
       'Next.js',
+      'React.js',
+      'TypeScript',
+      'JavaScript',
+      'Express.js',
       'Node.js',
+      'PostgreSQL',
+      'TypeORM',
+      'Material-UI',
+      'Tailwind CSS',
+      'Auth0',
+      'Google Cloud Storage',
+      'JWT Authentication',
+      'REST APIs',
       'Docker',
-      'MongoDB',
-      'Mongoose',
-      'HTML',
-      'CSS',
-      'Bootstrap',
+      'Git',
+      'Microservices Architecture',
+      'Server-Side Rendering (SSR)',
     ],
   },
   {
@@ -510,31 +606,33 @@ const experiences = [
     iconBg: '#F7F7F7',
     date: 'May 2020 - August 2020',
     points: [
-      'Improved **user engagement** by rebuilding iOS and Android apps in **Swift** and **Kotlin**, launching **30+ new features** including **real-time progress tracking**, **team challenges**, and **secure authentication flows**.',
-      'Increased **user retention and engagement** by building a **multi-user competition engine** with a custom **bidding algorithm** and **PayPal integration** to enable monetized weight loss challenges.',
-      'Scaled **backend performance and feature delivery** by upgrading **40+ REST API endpoints**, redesigning the **database schema**, and building **8 Laravel schedulers** to automate background workflows.',
-      'Accelerated **cross-platform development** by integrating **React Native components** into the native iOS/Android codebase using **Electrode Native**, ensuring **high performance and maintainability**.',
+      'Enhanced **mobile fitness applications** using **Swift** and **Kotlin**, implementing **30+ features** including **real-time progress tracking**, **team challenges**, and **OAuth authentication**, improving user engagement across **iOS and Android platforms**',
+      'Developed **multi-user competition system** with **custom bidding logic** and **PayPal API integration**, enabling **monetized weight loss challenges** and increasing user retention through **gamification mechanics**',
+      'Optimized **backend performance** by refactoring **40+ REST API endpoints** in **Laravel/PHP**, redesigning **MySQL database schema**, and implementing **8 automated schedulers** for background task processing',
+      'Integrated **React Native components** into native mobile apps using **Electrode Native**, enabling **code reuse** between platforms while maintaining **native performance** and **cross-platform consistency**',
     ],
     tech_stack: [
-      'Kotlin',
-      'Java',
       'Swift',
+      'Kotlin',
       'React Native',
-      'PHP',
       'Laravel',
+      'PHP',
       'MySQL',
-      'AWS',
-      'PuTTY',
       'REST APIs',
+      'PayPal API',
+      'OAuth',
       'JSON',
-      'Bootstrap',
-      'Scrum Environment',
+      'AWS',
+      'Electrode Native',
+      'iOS Development',
+      'Android Development',
+      'Database Design',
+      'Background Processing',
+      'GitHub',
       'Android Studio',
       'Xcode',
-      'GitHub',
-      'Mobile Application Development',
-      'PayPal Integration',
-      'Electrode Native',
+      'Bootstrap',
+      'Agile',
     ],
   },
   {

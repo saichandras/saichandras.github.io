@@ -57,7 +57,7 @@ import redis from './tech/redis.png';
 import redux from './tech/redux.png';
 import reduxSaga from './tech/reduxSaga.png';
 import saml from './tech/saml.png';
-import sql_server from './tech/sql-server.png';
+import sql from './tech/sql.png';
 import sqla from './tech/sqla.png';
 import sso from './tech/sso.png';
 import swift from './tech/swift.png';
@@ -67,6 +67,24 @@ import threejs from './tech/threejs.svg';
 import typescript from './tech/typescript.png';
 import vscode from './tech/vscode.png';
 import xcode from './tech/xcode.png';
+import typeorm from './tech/typeorm.png';
+import prisma from './tech/prisma.png';
+import radix_ui from './tech/radix_ui.png';
+import shadcn from './tech/shadcn.png';
+import react_hook_form from './tech/react_hook_form.png';
+import zod from './tech/zod.png';
+import d3js from './tech/d3js.png';
+import langchain from './tech/langchain.png';
+import mistral from './tech/mistral.png';
+import selenium from './tech/selenium.png';
+import formik from './tech/formik.png';
+import auth0 from './tech/auth0.png';
+import stripe from './tech/stripe.png';
+import paypal from './tech/paypal.png';
+import kubernetes from './tech/kubernetes.png';
+import github_actions from './tech/github_actions.png';
+import nginx from './tech/nginx.png';
+import new_relic from './tech/new_relic.png';
 
 import carlin_fit_llc_logo from './company/carlin_fit_llc_logo.png';
 import datachat_logo from './company/datachat_logo.png';
@@ -169,7 +187,6 @@ export {
   samantha_carlin,
   saml,
   shreya_nayak,
-  sql_server,
   sqla,
   sso,
   swift,
@@ -190,4 +207,23 @@ export {
   singup,
   user_dashboard,
   registration_appointment,
+  sql,
+  typeorm,
+  prisma,
+  radix_ui,
+  shadcn,
+  react_hook_form,
+  zod,
+  d3js,
+  langchain,
+  mistral,
+  selenium,
+  formik,
+  auth0,
+  stripe,
+  paypal,
+  kubernetes,
+  github_actions,
+  nginx,
+  new_relic,
 };

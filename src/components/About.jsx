@@ -55,47 +55,72 @@ const About = () => {
         className="mt-4 text-secondary text-[17px] leading-[30px]"
       >
         <p>
-          I’m a <span class="font-bold">full stack engineer</span> with a track record of
-          <span class="font-bold">leading architecture</span> and
-          <span class="font-bold">implementation for scalable SaaS platforms</span> across
-          healthcare, analytics, and infrastructure-heavy domains. I operate at the intersection of{' '}
-          <span class="font-bold">engineering depth</span> and{' '}
-          <span class="font-bold">product impact</span>, transforming brittle systems into
-          performant, secure, and extensible platforms used at scale.
+          I&apos;m a <span className="font-bold">Senior Full Stack Engineer</span> with{' '}
+          <span className="font-bold">5+ years of experience</span> building{' '}
+          <span className="font-bold">enterprise healthcare platforms</span> and{' '}
+          <span className="font-bold">AI-powered analytics systems</span> that serve{' '}
+          <span className="font-bold">millions of users</span> across healthcare, SaaS, and
+          logistics domains. I specialize in transforming complex business requirements into{' '}
+          <span className="font-bold">scalable, compliant, and performant platforms</span> that
+          drive real business outcomes.
         </p>
 
-        <p class="mt-4">
-          I specialize in <span class="font-bold">backend architecture</span>,
-          <span class="font-bold">CI/CD automation</span>, and
-          <span class="font-bold">cloud-native infrastructure</span>. My experience spans building{' '}
-          <span class="font-bold">resilient microservices</span> with Flask and Golang, designing
-          deployment pipelines with <span class="font-bold">Terraform</span> and
-          <span class="font-bold">AWS CodePipeline</span>, and orchestrating
-          <span class="font-bold">zero-downtime releases</span> across distributed systems. I’ve led{' '}
-          <span class="font-bold">platform migrations</span>, serverless system rollouts, and
-          cost-optimized infrastructure designs that serve millions of data records with high
-          availability.
+        <p className="mt-4">
+          My expertise centers on <span className="font-bold">healthcare technology</span> and{' '}
+          <span className="font-bold">enterprise platform architecture</span>. I&apos;ve architected
+          platforms serving{' '}
+          <span className="font-bold">3M+ students across 50+ California school districts</span>,
+          built <span className="font-bold">FERPA/HIPAA-compliant systems</span> that recovered{' '}
+          <span className="font-bold">$1M+ in Medicaid reimbursements</span>, and created{' '}
+          <span className="font-bold">self-service API platforms</span> connecting{' '}
+          <span className="font-bold">15+ healthcare partners</span> to enterprise databases. I
+          operate at the intersection of <span className="font-bold">regulatory compliance</span>,{' '}
+          <span className="font-bold">system scalability</span>, and{' '}
+          <span className="font-bold">user experience</span>.
         </p>
 
-        <p class="mt-4">
-          At the application layer, I’ve architected{' '}
-          <span class="font-bold">HIPAA-compliant platforms</span>, built{' '}
-          <span class="font-bold">real-time engines</span> to process thousands of requests per
-          second, and integrated AI tooling like <span class="font-bold">LangChain</span> and local
-          LLMs to accelerate internal dev workflows. I’ve also delivered{' '}
-          <span class="font-bold">Stripe</span> and{' '}
-          <span class="font-bold">PayPal-based billing flows</span>,
-          <span class="font-bold">multi-tenant role systems</span>, and data pipelines that drive
-          reporting, compliance, and decision-making at scale.
+        <p className="mt-4">
+          At the technical level, I build with <span className="font-bold">React.js</span>,{' '}
+          <span className="font-bold">Flask</span>, <span className="font-bold">TypeScript</span>,
+          and <span className="font-bold">SQLAlchemy</span>, deploying on{' '}
+          <span className="font-bold">AWS</span> and <span className="font-bold">Kubernetes</span>{' '}
+          with <span className="font-bold">Terraform</span> automation. I&apos;ve pioneered{' '}
+          <span className="font-bold">AI-powered development workflows</span> using{' '}
+          <span className="font-bold">LangChain</span> and{' '}
+          <span className="font-bold">vector embeddings</span> for{' '}
+          <span className="font-bold">natural language code search</span> across{' '}
+          <span className="font-bold">500K+ lines of code</span>, and built{' '}
+          <span className="font-bold">conversational analytics platforms</span> with{' '}
+          <span className="font-bold">100+ domain-aware commands</span> that eliminate manual chart
+          construction.
         </p>
 
-        <p class="mt-4">
-          I focus on delivering systems that are <span class="font-bold">testable</span>,
-          <span class="font-bold">observable</span>, and aligned with{' '}
-          <span class="font-bold">business outcomes</span>. Whether I’m unblocking teams with{' '}
-          <span class="font-bold">architectural direction</span> or pushing critical features to
-          production, I bring a <span class="font-bold">product-led mindset</span> backed by
-          <span class="font-bold">engineering excellence</span>.
+        <p className="mt-4">
+          My infrastructure experience includes{' '}
+          <span className="font-bold">multi-AZ Kubernetes clusters</span>,{' '}
+          <span className="font-bold">CI/CD pipelines</span> with{' '}
+          <span className="font-bold">GitHub Actions</span>, and{' '}
+          <span className="font-bold">distributed messaging systems</span> using{' '}
+          <span className="font-bold">RabbitMQ</span>. I&apos;ve reduced{' '}
+          <span className="font-bold">deployment times from weeks to hours</span>, achieved{' '}
+          <span className="font-bold">99.9% uptime</span>, and implemented{' '}
+          <span className="font-bold">performance monitoring</span> that cut{' '}
+          <span className="font-bold">server costs by 40%</span> while supporting{' '}
+          <span className="font-bold">2x traffic growth</span>.
+        </p>
+
+        <p className="mt-4">
+          I focus on delivering <span className="font-bold">mission-critical systems</span> that are{' '}
+          <span className="font-bold">secure</span>, <span className="font-bold">observable</span>,
+          and <span className="font-bold">compliant</span>. Whether I&apos;m architecting{' '}
+          <span className="font-bold">revenue-generating SaaS platforms</span> with{' '}
+          <span className="font-bold">Stripe billing</span> and{' '}
+          <span className="font-bold">enterprise SSO</span>, or building{' '}
+          <span className="font-bold">real-time analytics dashboards</span> that increase
+          operational efficiency by <span className="font-bold">25%</span>, I bring a{' '}
+          <span className="font-bold">product-minded approach</span> backed by{' '}
+          <span className="font-bold">deep technical expertise</span> and{' '}
+          <span className="font-bold">healthcare domain knowledge</span>.
         </p>
       </motion.p>
 
