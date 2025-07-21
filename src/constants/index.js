@@ -571,7 +571,7 @@ const experiences = [
     company_link: 'https://www.nine.is/',
     icon: the_nine_logo,
     iconBg: '#F7F7F7',
-    date: 'May 2021 - July 2021',
+    date: 'Jan 2021 - July 2021',
     points: [
       'Architected **logistics recruitment platform** using **Next.js, Material-UI, Express.js, TypeORM** serving **500+ trucking companies** with real-time job matching, driver analytics dashboards, and automated workflow management for the transportation industry',
       'Optimized **platform performance by 60%** through **Next.js SSR implementation**, lazy loading, and API caching, **migrating legacy jQuery architecture** to modern component-based design with **microservices integration**',
