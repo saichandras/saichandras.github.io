@@ -462,13 +462,13 @@ const experiences = [
     iconBg: '#F7F7F7',
     date: 'February 2023 - Present',
     points: [
-      'Architected **Student Health Network (SHN) platform** serving **millions of students** through **$100M+ annual Medicaid reimbursements** across **hundreds of California school districts**, integrating **EHR management**, **CYBHI mental health billing**, and federal claims processing using **React**, **Flask**, **SQLAlchemy**, **Oracle** with **FERPA/HIPAA compliance**',
-      'Engineered self-service **API ecosystem** empowering **15+ healthcare partners** to integrate student health data through **FHIR/HL7-compliant RESTful APIs**, featuring interactive documentation, usage analytics, and real-time status monitoring for **HIPAA-compliant cross-system data exchange**',
+      'Architected **Student Health Network (SHN) EHR platform** serving **millions of students** through **$100M+ annual Medicaid reimbursements** across **hundreds of California districts**, integrating **clinical workflows**, **behavioral health billing**, and **federal claims processing** using **React**, **Flask**, **SQLAlchemy**, **Oracle** with **FERPA/HIPAA compliance**',
+      'Engineered self-service **API ecosystem** empowering **15+ healthcare partners** to integrate student health data through **FHIR/HL7-compliant RESTful APIs**, featuring **interactive documentation**, **usage analytics**, and **real-time status monitoring** for **HIPAA-compliant cross-system data exchange**',
       'Developed **AI-powered knowledge platform** using **React**, **LangChain**, and **vector embeddings**, enabling cross-functional teams to instantly search **500K+ lines** of healthcare code, student health records, and federal billing datasets through **natural language queries** with **fully offline AI infrastructure**',
-      'Created **comprehensive healthcare design system** with **React**, **ShadCN**, and **TypeScript**, building reusable UI components for immunization tracking, mental health records, Medicaid reporting, and claims management with **standardized form validation** and **audit-ready workflows**',
-      'Built **EduClaim analytics dashboard** providing real-time billing insights for K-12 districts, featuring automated claims tracking, reimbursement optimization, and denial pattern analysis that **increased billing efficiency by 25%** and **recovered $1M+ in previously denied claims**',
-      'Orchestrated **GitLab to GitHub migration** for healthcare deployment, designing **full-stack CI/CD pipelines** that streamlined **React component testing**, **Python API validation**, and **database migrations** across development, staging, and production environments',
-      'Implemented **application performance monitoring** using **New Relic APM** and custom alerting workflows, identifying memory leaks in **Flask applications** and implementing resource optimization that **reduced server costs by 40%** while supporting **2x traffic growth**',
+      'Created **comprehensive healthcare design system** with **React**, **ShadCN**, and **TypeScript**, building **reusable UI components** for **immunization tracking**, **mental health records**, **Medicaid reporting**, and **claims management** with **standardized form validation** and **audit-ready workflows**',
+      'Built **EduClaim analytics dashboard** providing **real-time billing insights** for **K-12 districts**, featuring **automated claims tracking**, **revenue cycle optimization**, and **denial pattern analysis** that **increased billing efficiency by 25%** and **recovered $1M+ in previously denied claims**',
+      'Orchestrated **GitLab to GitHub migration** for healthcare deployment, designing **full-stack CI/CD pipelines** that streamlined **React component testing**, **Python API validation**, and **database migrations** across **development, staging, and production environments**',
+      'Implemented **application performance monitoring** using **New Relic APM** and **custom alerting workflows**, identifying **memory leaks** in **Flask application** and implementing **resource optimization** that **reduced server costs by 40%** while supporting **2x traffic growth**',
     ],
     tech_stack: [
       'React.js',
@@ -571,7 +571,7 @@ const experiences = [
     company_link: 'https://www.nine.is/',
     icon: the_nine_logo,
     iconBg: '#F7F7F7',
-    date: 'Jan 2021 - July 2021',
+    date: 'May 2021 - July 2021',
     points: [
       'Architected **logistics recruitment platform** using **Next.js, Material-UI, Express.js, TypeORM** serving **500+ trucking companies** with real-time job matching, driver analytics dashboards, and automated workflow management for the transportation industry',
       'Optimized **platform performance by 60%** through **Next.js SSR implementation**, lazy loading, and API caching, **migrating legacy jQuery architecture** to modern component-based design with **microservices integration**',
