@@ -57,7 +57,7 @@ const About = () => {
         <p>
           I&apos;m a <span className="font-bold">Senior Full Stack Engineer</span> with{' '}
           <span className="font-bold">5+ years of experience</span> building{' '}
-          <span className="font-bold">enterprise-scale healthcare platforms</span> and{' '}
+          <span className="font-bold">enterprise-scale platforms</span> and{' '}
           <span className="font-bold">AI-powered analytics systems</span> that serve{' '}
           <span className="font-bold">millions of users</span> across healthcare, SaaS, and
           logistics domains with <span className="font-bold">$100M+ revenue impact</span>. I
@@ -69,10 +69,10 @@ const About = () => {
         <p className="mt-4">
           My expertise centers on <span className="font-bold">healthcare technology</span> and{' '}
           <span className="font-bold">enterprise platform architecture</span>. I&apos;ve architected
-          the <span className="font-bold">Student Health Network (SHN) platform</span> serving{' '}
+          the <span className="font-bold">Student Health Network (SHN) EHR platform</span> serving{' '}
           <span className="font-bold">millions of students</span> through{' '}
           <span className="font-bold">$100M+ annual Medicaid reimbursements</span> across{' '}
-          <span className="font-bold">hundreds of California school districts</span>, built{' '}
+          <span className="font-bold">hundreds of California districts</span>, built{' '}
           <span className="font-bold">FHIR/HL7-compliant API ecosystems</span> connecting{' '}
           <span className="font-bold">15+ healthcare partners</span>, and created{' '}
           <span className="font-bold">AI-powered knowledge platforms</span> that enable{' '}
