@@ -117,7 +117,7 @@ const About = () => {
           <span className="font-bold">secure</span>, <span className="font-bold">observable</span>,
           and <span className="font-bold">compliant</span>. Whether I&apos;m engineering{' '}
           <span className="font-bold">self-service API platforms</span> with{' '}
-          <span className="font-bold">HIPAA-compliant cross-system data exchange</span>, building{' '}
+          <span className="font-bold">HIPAA-compliant healthcare interoperability</span>, building{' '}
           <span className="font-bold">EduClaim analytics dashboards</span> for{' '}
           <span className="font-bold">K-12 districts</span>, or developing{' '}
           <span className="font-bold">revenue-generating SaaS solutions</span> with{' '}
