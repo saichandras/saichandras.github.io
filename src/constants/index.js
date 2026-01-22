@@ -572,7 +572,7 @@ const experiences = [
     company_link: 'https://www.nine.is/',
     icon: the_nine_logo,
     iconBg: '#F7F7F7',
-    date: 'May 2021 - July 2021',
+    date: 'July 2021 - July 2021',
     points: [
       'Architected **logistics recruitment platform** using **Next.js, Material-UI, Express.js, TypeORM** serving **500+ trucking companies** with real-time job matching, driver analytics dashboards, and automated workflow management for the transportation industry',
       'Optimized **platform performance by 60%** through **Next.js SSR implementation**, lazy loading, and API caching, **migrating legacy jQuery architecture** to modern component-based design with **microservices integration**',
@@ -605,7 +605,7 @@ const experiences = [
     company_link: 'https://fit4friends.com/',
     icon: carlin_fit_llc_logo,
     iconBg: '#F7F7F7',
-    date: 'May 2020 - August 2020',
+    date: 'May 2020 - July 2020',
     points: [
       'Enhanced **mobile fitness applications** using **Swift** and **Kotlin**, implementing **30+ features** including **real-time progress tracking**, **team challenges**, and **OAuth authentication**, improving user engagement across **iOS and Android platforms**',
       'Developed **multi-user competition system** with **custom bidding logic** and **PayPal API integration**, enabling **monetized weight loss challenges** and increasing user retention through **gamification mechanics**',
