@@ -55,7 +55,7 @@ const About = () => {
         className="mt-4 text-secondary text-[17px] leading-[30px]"
       >
         <p>
-          I&apos;m a <span className="font-bold">Full Stack Engineer</span> with{' '}
+          I&apos;m a <span className="font-bold">Lead Full Stack Engineer</span> with{' '}
           <span className="font-bold">5+ years of experience</span> building{' '}
           <span className="font-bold">enterprise-scale platforms</span> and{' '}
           <span className="font-bold">AI-powered analytics systems</span> that serve{' '}

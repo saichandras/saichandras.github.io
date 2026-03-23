@@ -109,6 +109,7 @@ import {
   github_actions,
   nginx,
   new_relic,
+  epsilon_logo
 } from '../../public/assets';
 
 export const navLinks = [
@@ -455,12 +456,34 @@ const technologies = [
 
 const experiences = [
   {
+    title: 'Lead Full Stack Engineer',
+    company_name: 'Epsilon',
+    company_link: 'https://www.epsilon.com/',
+    icon: epsilon_logo,
+    iconBg: '#F7F7F7',
+    date: 'March 2026 - Present',
+    points: [
+      'Leading full stack development efforts across frontend and backend systems for a **large-scale marketing and advertising platform**, working on **consumer data and campaign workflows**',
+      'Collaborating with cross-functional teams to contribute to **scalable, high-performance services** across **distributed systems**, supporting real-time data processing and platform reliability',
+    ],
+    tech_stack: [
+      'Python',
+      'TypeScript',
+      'Angular',
+      'AWS',
+      'GCP',
+      'Distributed Systems',
+      'REST APIs',
+      'Microservices Architecture',
+    ],
+  },
+  {
     title: 'Full Stack Engineer',
     company_name: 'Paradigm Healthcare Services',
     company_link: 'https://paradigm-healthcare.com/',
     icon: paradigm_logo,
     iconBg: '#F7F7F7',
-    date: 'February 2023 - Present',
+    date: 'February 2023 - March 2026',
     points: [
       'Architected **Student Health Network (SHN) EHR platform** serving **millions of students** through **$100M+ annual Medicaid reimbursements** across **hundreds of California districts**, integrating clinical workflows, behavioral health billing, and federal claims processing using React, Flask, SQLAlchemy, Oracle with **FERPA/HIPAA compliance**',
       'Engineered self-service **API ecosystem** empowering **8+ healthcare partners** to integrate student health data through **FHIR/HL7-compliant RESTful APIs**, featuring interactive documentation, usage analytics, and real-time status monitoring for HIPAA-compliant healthcare interoperability',
