@@ -91,6 +91,7 @@ import datachat_logo from './company/datachat_logo.png';
 import infosys_logo from './company/infosys_logo.png';
 import paradigm_logo from './company/paradigm-logo.png';
 import the_nine_logo from './company/the_nine_logo.png';
+import epsilon_logo from './company/epsilon_logo.png';
 
 import tracker_1 from './projects/tracker_1.gif';
 import tracker_2 from './projects/tracker_2.gif';
@@ -226,4 +227,5 @@ export {
   github_actions,
   nginx,
   new_relic,
+  epsilon_logo
 };
