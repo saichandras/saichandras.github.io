@@ -9,7 +9,8 @@ const styles = {
     'text-[#dfd9ff] font-medium lg:text-[26px] sm:text-[22px] xs:text-[20px] text-[17.3px] lg:leading-[40px] md:mt-0 mt-1',
 
   sectionHeadText: 'text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]',
-  sectionSubText: 'sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider',
+  sectionSubText:
+    'sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider font-mono',
 };
 
 export { styles };

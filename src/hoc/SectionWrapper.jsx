@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import { styles } from '../app/styles';
 import { staggerContainer } from '../utils/motion';
 
@@ -22,10 +21,5 @@ const SectionWrapper = (Component, idName) =>
       </motion.section>
     );
   };
-
-SectionWrapper.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  idName: PropTypes.string.isRequired,
-};
 
 export default SectionWrapper;

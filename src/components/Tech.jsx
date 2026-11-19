@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { technologies } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn } from '../utils/motion';
-import DynamicImageLoader from './DynamicImageLoader';
-import Tooltip from './Tooltip'; // Ensure the correct path to Tooltip component
+import Tooltip from './Tooltip';
 
 const Tech = () => {
   return (
@@ -23,11 +23,12 @@ const Tech = () => {
                 justify-center bg-white from-gray-100 to-gray-200 shadow-lg 
                 rounded-xl transform transition-transform hover:scale-110 hover:shadow-xl"
             >
-              <DynamicImageLoader
-                unoptimized
+              <Image
                 src={technology.icon}
                 alt={technology.name}
-                className="sm:w-11 sm:h-11 w-10 h-10 object-contain"
+                width={44}
+                height={44}
+                className="h-10 w-10 object-contain sm:h-11 sm:w-11"
               />
             </div>
           </Tooltip>
@@ -36,7 +37,5 @@ const Tech = () => {
     </motion.div>
   );
 };
-
-Tech.propTypes = {};
 
 export default SectionWrapper(Tech, '');

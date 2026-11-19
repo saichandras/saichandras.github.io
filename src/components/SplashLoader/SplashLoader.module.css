@@ -1,5 +1,5 @@
 /* Main Loading Container */
-.mainLoadingConatiner {
+.mainLoadingContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -247,7 +247,7 @@
 }
 
 /* Name Loading Indicator */
-.loadingConatiner {
+.loadingContainer {
   position: absolute;
   top: 73vh;
 }

@@ -29,8 +29,6 @@ const Stars = (props) => {
   );
 };
 
-Stars.propTypes = {};
-
 const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
@@ -41,7 +39,5 @@ const StarsCanvas = () => {
     </div>
   );
 };
-
-StarsCanvas.propTypes = {};
 
 export default StarsCanvas;

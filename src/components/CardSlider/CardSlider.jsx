@@ -1,14 +1,45 @@
+'use client';
+
 import PropTypes from 'prop-types';
-import { EffectCards, EffectCube, Pagination, Autoplay } from 'swiper/modules';
+import { useEffect, useRef } from 'react';
+import { Autoplay, EffectCards, EffectCube, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import DynamicImageLoader from '../DynamicImageLoader';
 
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 
+const syncVideos = (swiper) => {
+  if (!swiper?.el) return;
+
+  const rect = swiper.el.getBoundingClientRect();
+  const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+  swiper.slides.forEach((slide) => {
+    const video = slide.querySelector('video');
+    if (!video) return;
+
+    if (visible && slide.classList.contains('swiper-slide-active')) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+};
+
 const CardSlider = ({ images, variant = 'mobile' }) => {
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (swiperRef.current) syncVideos(swiperRef.current);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   let swiperEffect = 'cards';
   let swiperModules = [EffectCards, Autoplay];
   let swiperClassNames = 'sm:w-[95%] w-[80%] h-full';
@@ -41,16 +72,23 @@ const CardSlider = ({ images, variant = 'mobile' }) => {
         delay: 8500,
         pauseOnMouseEnter: true,
       }}
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+        syncVideos(swiper);
+      }}
+      onSlideChange={syncVideos}
       {...swiperProps}
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <DynamicImageLoader
-            unoptimized
-            className="w-full h-full rounded-2xl"
+          <video
+            className="h-auto w-full rounded-2xl"
             src={image}
-            alt={`Slide ${index + 1}`}
-            useLazy={false}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`Slide ${index + 1}`}
           />
         </SwiperSlide>
       ))}

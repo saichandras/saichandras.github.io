@@ -1,6 +1,8 @@
-name: Teardown
+name: Teardown PR Preview
 
 on:
+  pull_request:
+    types: [closed]
   workflow_dispatch:
     inputs:
       pr_number:
@@ -9,17 +11,24 @@ on:
 
 permissions:
   contents: read
-  actions: write
 
 jobs:
   teardown:
+    # Fork PRs never had a preview, and cannot read secrets.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    environment: pr-deploy
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.inputs.pr_number }}
 
     steps:
-      - name: Teardown Surge Deployment
-        run: |
-          REPO_NAME=$(echo ${GITHUB_REPOSITORY} | sed 's/\//-/g')
-          DEPLOY_URL=https://pr-${{ github.event.inputs.pr_number }}-$REPO_NAME.surge.sh
-          surge teardown $DEPLOY_URL --token ${{ secrets.SURGE_TOKEN }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Teardown Surge deployment
         env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: npx surge teardown "pr-${PR_NUMBER}-saichandras-portfolio.surge.sh"

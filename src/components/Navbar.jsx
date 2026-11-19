@@ -1,32 +1,40 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { close, menu } from '../../public/assets';
 import { navLinks } from '../constants';
-import DynamicImageLoader from './DynamicImageLoader';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  const handleScroll = useCallback(() => {
-    if (window.scrollY > lastScrollY && window.scrollY > 100) {
-      setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
-    setLastScrollY(window.scrollY);
-  }, [lastScrollY]);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      // Hide the bar while scrolling down, show it while scrolling up.
+      const current = window.scrollY;
+      setIsVisible(!(current > lastScrollY.current && current > 100));
+      lastScrollY.current = current;
+
+      // Highlight the link of the last section whose start has passed 40% of the viewport.
+      const threshold = window.innerHeight * 0.4;
+      let activeTitle = '';
+      navLinks.forEach(({ id, title }) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= threshold) {
+          activeTitle = title;
+        }
+      });
+      setActive(activeTitle);
     };
-  }, [handleScroll]);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav
@@ -43,18 +51,11 @@ const Navbar = () => {
           }}
           className="flex items-center gap-4"
         >
-          <DynamicImageLoader
-            unoptimized
-            src="/assets/s_logo.png"
-            alt="logo"
-            width={40}
-            height={40}
-            useLazy={false}
-          />
+          <Image src="/assets/s_logo.png" alt="Sai Chandra logo" width={40} height={40} />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
             <span>Sai Chandra</span>
             <span className="hidden md:inline-block pl-1.5 pr-1.5">|</span>
-            <span className="hidden md:inline-block">Full Stack Engineer</span>
+            <span className="hidden md:inline-block">Lead Software Engineer</span>
           </p>
         </Link>
         <ul className="hidden md:flex flex-row gap-10">
@@ -62,25 +63,29 @@ const Navbar = () => {
             <li
               key={link.id}
               className={`${
-                active === link.title ? 'text-white' : 'text-secondary'
+                active === link.title ? 'text-[#22d3ee]' : 'text-secondary'
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
             >
-              <Link href={`/#${link.id}`}>{link.title} </Link>
+              <Link href={`/#${link.id}`}>{link.title}</Link>
             </li>
           ))}
         </ul>
         <div className="md:hidden flex items-center">
-          <DynamicImageLoader
-            unoptimized
-            src={toggle ? close : menu}
-            alt="menu"
-            className="object-contain cursor-pointer"
+          <button
+            type="button"
+            aria-label={toggle ? 'Close menu' : 'Open menu'}
+            aria-expanded={toggle}
             onClick={() => setToggle(!toggle)}
-            width={28}
-            height={28}
-            useLazy={false}
-          />
+            className="flex items-center justify-center"
+          >
+            <Image
+              src={toggle ? close : menu}
+              alt=""
+              className="object-contain cursor-pointer"
+              width={28}
+              height={28}
+            />
+          </button>
           <div
             className={`${
               !toggle ? 'hidden' : 'flex'
@@ -91,14 +96,12 @@ const Navbar = () => {
                 <li
                   key={link.id}
                   className={`${
-                    active === link.title ? 'text-white' : 'text-secondary'
+                    active === link.title ? 'text-[#22d3ee]' : 'text-secondary'
                   } font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
                 >
-                  <Link href={`/#${link.id}`}>{link.title}</Link>
+                  <Link href={`/#${link.id}`} onClick={() => setToggle(false)}>
+                    {link.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -108,7 +111,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
-Navbar.propTypes = {};
 
 export default Navbar;

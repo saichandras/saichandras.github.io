@@ -1,13 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { styles } from '../app/styles';
 import { testimonials } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn, textVariant } from '../utils/motion';
-import DynamicImageLoader from './DynamicImageLoader';
 
 const FeedbackCard = ({ index, testimonial, name, connector, designation, company, image }) => (
   <motion.div
@@ -28,14 +27,12 @@ const FeedbackCard = ({ index, testimonial, name, connector, designation, compan
             {designation} {connector} {company}
           </p>
         </div>
-        <DynamicImageLoader
-          unoptimized
+        <Image
           src={image}
           alt={`feedback_by-${name}`}
           className="rounded-full object-cover"
           width={40}
           height={40}
-          useLazy={false}
         />
       </div>
     </div>
@@ -47,8 +44,9 @@ FeedbackCard.propTypes = {
   testimonial: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   designation: PropTypes.string.isRequired,
+  connector: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 };
 
 const Feedbacks = () => {
@@ -67,18 +65,6 @@ const Feedbacks = () => {
       </div>
     </div>
   );
-};
-
-Feedbacks.propTypes = {
-  testimonials: PropTypes.arrayOf(
-    PropTypes.shape({
-      testimonial: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      designation: PropTypes.string.isRequired,
-      company: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }),
-  ),
 };
 
 export default SectionWrapper(Feedbacks, '');

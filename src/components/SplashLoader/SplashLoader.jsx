@@ -35,7 +35,7 @@ const SplashLoader = () => {
   const stars = useMemo(() => generateStars(numStars, minStarSize, maxStarSize), []);
 
   return (
-    <div className={styles.mainLoadingConatiner}>
+    <div className={styles.mainLoadingContainer}>
       <div className={styles.backgroundImage}></div> {/* Background Image */}
       <div className={styles.boxOfStar}>{stars}</div>
       <div className={styles.astronaut}>
@@ -49,7 +49,7 @@ const SplashLoader = () => {
         <div className={`${styles.leg} ${styles.legRight}`}></div>
         <div className={styles.schoolbag}></div>
       </div>
-      <div className={styles.loadingConatiner}>
+      <div className={styles.loadingContainer}>
         <div data-glitch="Loading..." className={styles.glitch}>
           Loading...
         </div>

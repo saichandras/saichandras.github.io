@@ -5,7 +5,7 @@ import styles from './Loader.module.css';
 
 const Loader = ({ size = 38 }) => {
   return (
-    <div className={styles.loaderConatiner}>
+    <div className={styles.loaderContainer}>
       <div className={styles.loader} style={{ width: `${size}px`, height: `${size}px` }}></div>
     </div>
   );

@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { styles } from '../app/styles';
@@ -10,65 +11,70 @@ import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { getGradientClassFromString } from '../utils/colors';
 import { textVariant } from '../utils/motion';
-import DynamicImageLoader from './DynamicImageLoader';
 import Point from './Point';
 
 const ExperienceCard = ({ experience }) => {
-  const [techStackClasses, setTechStackClasses] = useState([]);
-
-  useEffect(() => {
-    const classes = experience.tech_stack.map((tech) => getGradientClassFromString(tech));
-    setTechStackClasses(classes);
-  }, [experience.tech_stack]);
+  const techStack = experience.techStack;
+  const techStackClasses = useMemo(
+    () => techStack.map((tech) => getGradientClassFromString(tech)),
+    [techStack],
+  );
 
   return (
     <VerticalTimelineElement
       visible
       contentStyle={{
-        background: '#1d1836',
+        background: 'rgba(21, 16, 48, 0.55)',
         color: '#fff',
+        border: '1px solid rgba(255, 255, 255, 0.12)',
+        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 40px -24px rgba(0, 0, 0, 0.7)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
       }}
-      contentArrowStyle={{ borderRight: '7px solid  #232631' }}
+      contentArrowStyle={{ borderRight: '7px solid rgba(255, 255, 255, 0.14)' }}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <a href={experience.company_link} target="_blank">
+        <a href={experience.companyLink} target="_blank" rel="noopener noreferrer">
           <div className="flex justify-center items-center w-full h-full">
-            <DynamicImageLoader
-              unoptimized
+            <Image
               src={experience.icon}
-              alt={experience.company_name}
-              className="w-[75%] h-[75%] object-contain"
+              alt={experience.companyName}
+              width={48}
+              height={48}
+              className="h-[75%] w-[75%] object-contain"
             />
           </div>
         </a>
       }
       position="right"
     >
-      <div className="flex justify-between items-start">
-        <div>
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
           <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
           <p className="text-secondary text-[18px] font-semibold" style={{ margin: 0 }}>
-            {experience.company_name}
+            {experience.companyName}
           </p>
+          {experience.location && (
+            <p className="text-secondary text-[14px]" style={{ margin: 0 }}>
+              {experience.location}
+            </p>
+          )}
         </div>
-        <span className="text-secondary sm:text-[14.5px] text-[14px] pl-3 mt-2">
+        <span className="block font-mono text-secondary text-[13px] sm:text-[13.5px] sm:pl-4 sm:mt-1.5 shrink-0 sm:whitespace-nowrap">
           {experience.date}
         </span>
       </div>
       <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-white-100 text-[14.4px] pl-1 tracking-wider"
-          >
+        {experience.points.map((point) => (
+          <li key={point} className="text-white-100 text-[14.4px] pl-1 tracking-wider">
             <Point text={point} />
           </li>
         ))}
       </ul>
-      {experience.tech_stack && experience.tech_stack.length > 0 && (
+      {techStack.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">
-          {experience.tech_stack.map((tech, idx) => (
-            <span key={`${tech}`} className={`text-[14px] ${techStackClasses[idx]}`}>
+          {techStack.map((tech, idx) => (
+            <span key={tech} className={`font-mono text-[13px] ${techStackClasses[idx]}`}>
               #{tech}
             </span>
           ))}
@@ -84,12 +90,13 @@ ExperienceCard.propTypes = {
   experience: PropTypes.shape({
     date: PropTypes.string.isRequired,
     iconBg: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    company_name: PropTypes.string.isRequired,
-    company_link: PropTypes.string.isRequired,
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    companyName: PropTypes.string.isRequired,
+    companyLink: PropTypes.string.isRequired,
+    location: PropTypes.string,
     title: PropTypes.string.isRequired,
     points: PropTypes.arrayOf(PropTypes.string).isRequired,
-    tech_stack: PropTypes.arrayOf(PropTypes.string),
+    techStack: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
 
@@ -107,15 +114,16 @@ const Experience = () => {
       </motion.div>
       <div className="mt-20 flex flex-col">
         <VerticalTimeline layout={'1-column-left'}>
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
+          {experiences.map((experience) => (
+            <ExperienceCard
+              key={`${experience.companyName}-${experience.date}`}
+              experience={experience}
+            />
           ))}
         </VerticalTimeline>
       </div>
     </>
   );
 };
-
-Experience.propTypes = {};
 
 export default SectionWrapper(Experience, 'work');
