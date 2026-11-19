@@ -10,8 +10,6 @@ const Earth = () => {
   return <primitive object={earth.scene} scale={3.37} position-y={0} rotation-y={0} />;
 };
 
-Earth.propTypes = {};
-
 const AutoRotatingControls = (props) => {
   const controlsRef = useRef();
 
@@ -50,7 +48,5 @@ const EarthCanvas = () => {
     </Canvas>
   );
 };
-
-EarthCanvas.propTypes = {};
 
 export default EarthCanvas;

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { github } from '../../public/assets';
 import { styles } from '../app/styles';
@@ -9,9 +10,8 @@ import { SectionWrapper } from '../hoc';
 import { getGradientClassFromString } from '../utils/colors';
 import { fadeIn, textVariant } from '../utils/motion';
 import CardSlider from './CardSlider/CardSlider';
-import DynamicImageLoader from './DynamicImageLoader';
 
-const ProjectCard = ({ index, name, description, tags, images, source_code_link, variant }) => {
+const ProjectCard = ({ index, name, description, tags, images, sourceCodeLink, variant }) => {
   const tagClasses = tags.map((tag) => getGradientClassFromString(tag));
 
   return (
@@ -20,30 +20,38 @@ const ProjectCard = ({ index, name, description, tags, images, source_code_link,
       whileInView="show"
       viewport={{ once: true, amount: 0.01 }}
       variants={fadeIn('up', 'spring', index * 0.1, 0.55)}
-      className={variant === 'website' ? 'w-full' : 'xs:w-[410px] md:w-[400px] w-[362px]'}
+      className={
+        variant === 'website'
+          ? 'w-full min-w-0'
+          : 'w-[362px] max-w-full min-w-0 xs:w-[410px] md:w-[400px]'
+      }
     >
-      <div className="bg-tertiary p-5 rounded-2xl">
+      <div className="glass-card p-5 rounded-2xl">
         <div className="relative w-full h-full mb-6">
           <CardSlider images={images} variant={variant} />
         </div>
         <div className="mt-3 mb-4 flex justify-between items-center">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <div
-            onClick={() => window.open(source_code_link, '_blank')}
+          <a
+            href={sourceCodeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${name} source code on GitHub`}
             className="white-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
           >
-            <DynamicImageLoader
-              unoptimized
+            <Image
               src={github}
-              alt="source code"
-              className="w-[60%] h-[60%] object-contain"
+              alt=""
+              width={22}
+              height={22}
+              className="h-[60%] w-[60%] object-contain"
             />
-          </div>
+          </a>
         </div>
         <p className="mt-2 text-secondary text-[14.4px]">{description}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag, idx) => (
-            <p key={`${tag}`} className={`text-[14px] ${tagClasses[idx]}`}>
+            <p key={tag} className={`font-mono text-[13px] ${tagClasses[idx]}`}>
               #{tag}
             </p>
           ))}
@@ -59,7 +67,7 @@ ProjectCard.propTypes = {
   description: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  source_code_link: PropTypes.string.isRequired,
+  sourceCodeLink: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(['website', 'mobile']),
 };
 
@@ -94,7 +102,7 @@ const Works = () => {
       <div className="mt-20 flex flex-wrap justify-center gap-x-52 gap-y-16">
         {projects.map((project, index) => (
           <ProjectCard
-            key={`project-${index}`}
+            key={project.name}
             index={index}
             {...project}
             variant={index === 0 ? 'website' : 'mobile'}

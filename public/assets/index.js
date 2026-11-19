@@ -33,7 +33,15 @@ import html_svg from './tech/html.svg';
 import java from './tech/java.png';
 import javascript from './tech/javascript.png';
 import jetbrains from './tech/jetbrains.png';
-import jinja from './tech/jinja.png';
+import faiss from './tech/faiss.png';
+import fhir from './tech/fhir.jpeg';
+import firebase from './tech/firebase.png';
+import hl7 from './tech/HL7.jpg';
+import jinja from './tech/jinja.svg';
+import jquery from './tech/jquery.svg';
+import oauth from './tech/oauth.webp';
+import rbac from './tech/rbac.png';
+import vuejs from './tech/vuejs.png';
 import json from './tech/json.png';
 import jwt from './tech/jwt.png';
 import kotlin from './tech/kotlin.png';
@@ -85,6 +93,18 @@ import kubernetes from './tech/kubernetes.png';
 import github_actions from './tech/github_actions.png';
 import nginx from './tech/nginx.png';
 import new_relic from './tech/new_relic.png';
+import azure from './tech/azure.svg';
+import bigquery from './tech/bigquery.svg';
+import bitbucket from './tech/bitbucket.svg';
+import databricks from './tech/databricks.svg';
+import gocd from './tech/gocd.svg';
+import jira from './tech/jira.svg';
+import kafka from './tech/kafka.svg';
+import linux from './tech/linux.jpg';
+import okta from './tech/okta.svg';
+import opa from './tech/opa.png';
+import pytest from './tech/pytest.svg';
+import snowflake from './tech/snowflake.svg';
 
 import carlin_fit_llc_logo from './company/carlin_fit_llc_logo.png';
 import datachat_logo from './company/datachat_logo.png';
@@ -93,29 +113,8 @@ import paradigm_logo from './company/paradigm-logo.png';
 import the_nine_logo from './company/the_nine_logo.png';
 import epsilon_logo from './company/epsilon_logo.png';
 
-import tracker_1 from './projects/tracker_1.gif';
-import tracker_2 from './projects/tracker_2.gif';
-import tracker_3 from './projects/tracker_3.gif';
-
-import meals_1 from './projects/meals_1.gif';
-import meals_2 from './projects/meals_2.gif';
-import meals_3 from './projects/meals_3.gif';
-
-import blogs_1 from './projects/blogs_1.gif';
-import blogs_2 from './projects/blogs_2.gif';
-import blogs_3 from './projects/blogs_3.gif';
-
-import food_app from './projects/Food_App.gif';
-import target_sum from './projects/target_sum.gif';
-import tictactoe from './projects/TicTacToe.gif';
-
 import samantha_carlin from './testimonials/samantha_carlin.jpeg';
 import shreya_nayak from './testimonials/shreya_nayak.jpeg';
-
-import admin from './projects/carepulse/admin.gif';
-import singup from './projects/carepulse/singup.gif';
-import registration_appointment from './projects/carepulse/registration_appointment.gif';
-import user_dashboard from './projects/carepulse/user_dashboard.gif';
 
 export {
   algolia,
@@ -123,9 +122,6 @@ export {
   angular,
   aws,
   backend,
-  blogs_1,
-  blogs_2,
-  blogs_3,
   bootstrap,
   c,
   carlin_fit_llc_logo,
@@ -139,9 +135,11 @@ export {
   echarts,
   electrode_native,
   expressjs,
+  faiss,
   figma,
+  fhir,
+  firebase,
   flask,
-  food_app,
   fusejs,
   gcp,
   git,
@@ -149,6 +147,7 @@ export {
   githubTech,
   gitlab,
   go,
+  hl7,
   html,
   html_svg,
   infosys_logo,
@@ -156,14 +155,12 @@ export {
   javascript,
   jetbrains,
   jinja,
+  jquery,
   json,
   jwt,
   kotlin,
   laravel,
   logo,
-  meals_1,
-  meals_2,
-  meals_3,
   menu,
   mobile,
   mongodb,
@@ -172,6 +169,7 @@ export {
   mysql,
   nextjs,
   nodejs,
+  oauth,
   oracle_db,
   paradigm_logo,
   php,
@@ -180,6 +178,7 @@ export {
   preloader,
   python,
   rabbitmq,
+  rbac,
   react,
   reactjs,
   redis,
@@ -192,22 +191,14 @@ export {
   sso,
   swift,
   tailwind,
-  target_sum,
   terraform,
   the_nine_logo,
   threejs,
-  tictactoe,
-  tracker_1,
-  tracker_2,
-  tracker_3,
   typescript,
   vscode,
+  vuejs,
   web,
   xcode,
-  admin,
-  singup,
-  user_dashboard,
-  registration_appointment,
   sql,
   typeorm,
   prisma,
@@ -227,5 +218,17 @@ export {
   github_actions,
   nginx,
   new_relic,
-  epsilon_logo
+  epsilon_logo,
+  azure,
+  bigquery,
+  bitbucket,
+  databricks,
+  gocd,
+  jira,
+  kafka,
+  linux,
+  okta,
+  opa,
+  pytest,
+  snowflake,
 };

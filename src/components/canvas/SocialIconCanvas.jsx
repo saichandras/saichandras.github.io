@@ -8,8 +8,7 @@ const SocialIcon = ({ link, iconPath, args }) => {
   const { scene } = useGLTF(iconPath);
 
   const handleIconClick = () => {
-    console.log('clicked');
-    window.open(link, '_blank');
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -45,7 +44,6 @@ const SocialIconCanvas = ({ link, iconPath, args }) => {
       shadows
       frameloop="demand"
       dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
       camera={{
         fov: 45,
         near: 0.1,

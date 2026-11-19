@@ -1,29 +1,61 @@
-# Sai Chandra's 3D Portfolio Website
+# Sai Chandra's 3D Portfolio
 
-Welcome to my personal portfolio website built with modern web technologies, including React, Vite, and Three.js for a 3D interactive experience.
+Personal portfolio built with Next.js, React Three Fiber, Tailwind CSS and Framer Motion. It is exported as a static site and hosted on GitHub Pages at [saichandras.github.io](https://saichandras.github.io/).
 
-## About
+## Highlights
 
-This is my personal portfolio website where I showcase my skills, projects, and experiences. It includes a 3D interactive model and modern UI/UX design to provide an engaging experience.
+- 3D hero scene, rotating 3D social icons and an interactive globe (Three.js via React Three Fiber and drei)
+- Work experience timeline, tech stack grid, project showcase with video sliders and testimonials
+- Contact form (Formik + Yup) that sends email through EmailJS
 
-## Technologies Used
+## Tech stack
 
-- **React:** A JavaScript library for building user interfaces.
-- **Next.js:** A React framework that enables server-side rendering and generating static websites for React-based web applications.
-- **Three.js:** A JavaScript library used to create and display animated 3D graphics in the browser.
-- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-- **Framer Motion:** A library to power animations in React.
-- **EmailJS:** For handling contact form submissions.
+Next.js 14 (static export), React 18, Three.js / React Three Fiber / drei, Tailwind CSS, Framer Motion, Swiper, Formik, Yup, EmailJS, React Toastify.
 
-## Features
+## Getting started
 
-- Interactive 3D model using Three.js.
-- Modern and responsive design.
-- Dynamic project showcase with image sliders.
-- Contact form integrated with EmailJS for direct communication.
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # static export to ./out
+npm run lint
+```
+
+### Environment variables
+
+The contact form needs EmailJS credentials. Create `.env.local`:
+
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_USER_ID=your_public_key
+```
+
+These values ship in the client bundle by design, so restrict allowed origins in the EmailJS dashboard.
+
+## Project structure
+
+```
+src/
+  app/            layout, page, global styles
+  components/     page sections (Hero, About, Experience, Tech, Works, ...)
+    canvas/       3D scenes (Computers, Earth, Stars, SocialIconCanvas)
+  constants/      all site content: experience, projects, skills, links
+  hoc/            SectionWrapper (scroll-in animation + anchor ids)
+  utils/          motion variants, tag colors
+public/
+  assets/         images, logos and project demo videos
+  desktop_pc, planet, linkedin, github, resume   3D models (glTF)
+```
+
+To update content (experience, projects, skills, testimonials, contact email), edit `src/constants/index.js`. The overview text lives in `src/components/About.jsx` and the hero tagline in `src/components/Hero.jsx`.
+
+## Deployment
+
+- Pushes to `master` build the site and publish `./out` to the `gh-pages` branch (`.github/workflows/deploy.yml`).
+- Pull requests from this repo get a Surge preview at `pr-<number>-saichandras-portfolio.surge.sh`. It is removed when the PR closes.
+- Required repository secrets: `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_USER_ID`, `SURGE_LOGIN`, `SURGE_TOKEN`.
 
 ## Contact
 
-Sai Chandra - saichandrasriram42@gmail.com
-
-Project Link: [https://saichandras.github.io/](https://saichandras.github.io/)
+Sai Chandra - saichandrasriram.dev@gmail.com

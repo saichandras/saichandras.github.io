@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+# The gh-pages action pushes the built site to the gh-pages branch.
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -11,27 +20,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20'
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Create .env file
-        run: |
-          echo "NEXT_PUBLIC_EMAILJS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}" >> .env
-          echo "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}" >> .env
-          echo "NEXT_PUBLIC_EMAILJS_USER_ID=${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}" >> .env
+        run: npm ci
 
       - name: Build project
         run: npm run build
+        env:
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out

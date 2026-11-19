@@ -1,13 +1,30 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { styles } from '../app/styles';
-import { social_icons } from '../constants';
-import Dynamic3DLoader from './Dynamic3DLoader'; // Import the Dynamic3DLoader
+import { socialIcons } from '../constants';
+import Loader from './Loader/Loader';
+
+const CanvasLoader = ({ size }) => (
+  <div className="flex h-full w-full items-center justify-center">
+    <Loader size={size} />
+  </div>
+);
+
+const ComputersCanvas = dynamic(() => import('./canvas/Computers'), {
+  ssr: false,
+  loading: () => <CanvasLoader size={40} />,
+});
+
+const SocialIconCanvas = dynamic(() => import('./canvas/SocialIconCanvas'), {
+  ssr: false,
+  loading: () => <CanvasLoader size={25} />,
+});
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative z-10 w-full h-screen mx-auto">
       <div
         className={`${styles.paddingX} absolute inset-0 top-[105px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
       >
@@ -17,22 +34,25 @@ const Hero = () => {
         </div>
         <div>
           <h1 className={`${styles.heroHeadText}`}>
-            Hi! I&lsquo;m <span className="text-[#915eff]">Sai Chandra</span>
+            Hi! I&lsquo;m <span className="text-[#22d3ee]">Sai Chandra</span>
           </h1>
           <p className={`${styles.heroSubText} text-white-100`}>
-            I build and scale customer-facing web apps and operational data systems with a focus on performance, security, and real-world impact.
+            I architect and build the systems that power complex products, from secure enterprise
+            platforms and distributed services to healthcare technology and AI-powered analytics.
           </p>
           <div className="w-full h-full flex flex-row gap-4 cursor-pointer">
-            {social_icons.map((icon) => (
-              <div key={icon.name} className="w-[50px] h-[50px] mt-7 z-20">
-                <Dynamic3DLoader
-                  componentPath="./canvas/SocialIconCanvas"
-                  link={icon.link}
-                  iconPath={icon.icon_path}
-                  args={icon.args}
-                  useLazy={false}
-                  loaderSize={25}
-                />
+            {socialIcons.map((icon) => (
+              <div key={icon.name} className="relative w-[50px] h-[50px] mt-7 z-20">
+                <SocialIconCanvas link={icon.link} iconPath={icon.iconPath} args={icon.args} />
+                {/* Keyboard and screen-reader access for the 3D icon above. */}
+                <a
+                  href={icon.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sr-only focus:not-sr-only focus:absolute focus:inset-0 focus:rounded-full focus:ring-2 focus:ring-[#915eff]"
+                >
+                  {icon.name}
+                </a>
               </div>
             ))}
           </div>
@@ -40,14 +60,11 @@ const Hero = () => {
       </div>
       <div className="pt-2" />
       <div className="computers-canvas-container">
-        <Dynamic3DLoader componentPath="./canvas/Computers" useLazy={false} />
+        <ComputersCanvas />
       </div>
-      <div
-        className="absolute bottom-20 flex justify-center items-center z-20 ml-[50%]
-       mr-[50%]"
-      >
-        <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+      <div className="absolute bottom-20 z-20 ml-[50%] mr-[50%] flex items-center justify-center">
+        <a href="#about" aria-label="Scroll to about">
+          <div className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2">
             <motion.div
               animate={{
                 y: [0, 24, 0],
@@ -57,7 +74,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: 'loop',
               }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
+              className="mb-1 h-3 w-3 rounded-full bg-secondary"
             />
           </div>
         </a>

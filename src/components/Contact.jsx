@@ -3,18 +3,26 @@
 import emailjs from '@emailjs/browser';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 import { styles } from '../app/styles';
+import { contact } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import Dynamic3DLoader from './Dynamic3DLoader';
+import Loader from './Loader/Loader';
+
+const EarthCanvas = dynamic(() => import('./canvas/Earth'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center">
+      <Loader />
+    </div>
+  ),
+});
 
 const Contact = () => {
-  const formRef = useRef();
-
   const initialValues = {
     name: '',
     email: '',
@@ -34,17 +42,17 @@ const Contact = () => {
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           from_name: values.name,
-          to_name: 'Sai Chandra',
+          to_name: contact.name,
           from_email: values.email,
-          to_email: 'saichandrasriram42@gmail.com',
+          to_email: contact.email,
           message: values.message,
         },
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
       );
       toast.success('Thank you. I will get back to you as soon as possible.', { icon: '🚀' });
       resetForm();
-    } catch (error) {
-      toast.error('Something went wrong.');
+    } catch {
+      toast.error('Something went wrong. Please try again or email me directly.');
     }
   };
 
@@ -52,7 +60,7 @@ const Contact = () => {
     <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse overflow-hidden`}>
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+        className="flex-[0.75] bg-black-100 p-5 sm:p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
@@ -70,7 +78,7 @@ const Contact = () => {
                   type="text"
                   name="name"
                   placeholder="What's your good name?"
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                  className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                 />
                 <ErrorMessage name="name" component="div" className="text-red-500 mt-2" />
               </label>
@@ -80,8 +88,8 @@ const Contact = () => {
                 <Field
                   type="email"
                   name="email"
-                  placeholder="What's your web address?"
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                  placeholder="What's your email address?"
+                  className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 mt-2" />
               </label>
@@ -93,7 +101,7 @@ const Contact = () => {
                   rows={7}
                   name="message"
                   placeholder="What you want to say?"
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                  className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                 />
                 <ErrorMessage name="message" component="div" className="text-red-500 mt-2" />
               </label>
@@ -101,6 +109,7 @@ const Contact = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="bg-tertiary py-3 px-16 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
                 >
                   {isSubmitting ? 'Sending...' : 'Send'}
@@ -114,22 +123,20 @@ const Contact = () => {
       <motion.div
         variants={slideIn('right', 'tween', 0.1, 0.55)}
         className="
-          xl:flex-1 
-          xl:h-[490px] xl:w-[450px] 
-          md:h-[420px] md:w-[490px] 
-          sm:h-[380px] sm:w-[470px]  
-          xs:h-[350px] xs:w-[400px] 
-          h-[310px] w-[350px]
+          w-full max-w-full
+          h-[280px]
+          xs:h-[330px] xs:max-w-[400px]
+          sm:h-[380px] sm:max-w-[440px]
+          md:h-[420px] md:max-w-[460px]
+          xl:h-[490px] xl:max-w-[450px] xl:flex-1
           xl:mb-0 mb-16
           self-center
         "
       >
-        <Dynamic3DLoader componentPath="./canvas/Earth" />
+        <EarthCanvas />
       </motion.div>
     </div>
   );
 };
-
-Contact.propTypes = {};
 
 export default SectionWrapper(Contact, 'contact');
